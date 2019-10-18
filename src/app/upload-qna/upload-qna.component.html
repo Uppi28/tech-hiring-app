@@ -1,0 +1,13 @@
+<mat-form-field><input type="text" matInput placeholder="Enter the question here" [(ngModel)]="question"></mat-form-field>
+
+<label id="qnaSection">Enter the options below</label>
+<mat-radio-group aria-labelledby="qnaSection"  [(ngModel)]="favoriteoption">
+    <mat-radio-button  *ngFor="let option of options;let index = index;trackBy:trackByIndex;">
+        <mat-form-field><input type="text" matInput [placeholder]="option" [(ngModel)]="options[index]"></mat-form-field>
+    </mat-radio-button>
+</mat-radio-group>
+<mat-card>The correct answer is: {{selectedOption}}</mat-card>
+<div class="width100 alignRight" style="justify-content: space-between;">
+    <button mat-raised-button color="warn">Warn</button>
+    <button mat-raised-button color="primary" (click)="onSubmit()">Primary</button>
+</div>
