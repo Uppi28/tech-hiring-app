@@ -5,27 +5,41 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatFormFieldModule } from "@angular/material/form-field";
-import { MatInputModule, MatRadioModule, MatButtonModule, MatCardModule } from "@angular/material";
+import { MatInputModule, MatRadioModule, MatButtonModule, MatCardModule, MatSelectModule } from "@angular/material";
 import { UploadQnaComponent } from './upload-qna/upload-qna.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { Routes, RouterModule } from "@angular/router";
+import { UiTestComponent } from './ui-test/ui-test.component';
+import { HomeComponent } from './home/home.component';
+
+const appRoutes: Routes = [
+  {path: '', component: HomeComponent},
+  {path: 'uitest', component: UiTestComponent},
+  {path: 'questions', component: UploadQnaComponent}
+]
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    UploadQnaComponent
+    UploadQnaComponent,
+    HomeComponent,
+    UiTestComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
+    ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
     MatRadioModule,
     MatButtonModule,
+    MatSelectModule,
     MatCardModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [],
   bootstrap: [AppComponent]
