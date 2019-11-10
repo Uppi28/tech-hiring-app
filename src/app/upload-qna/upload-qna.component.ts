@@ -7,31 +7,29 @@ import { FormControl, Validators } from "@angular/forms";
   styleUrls: ['./upload-qna.component.css']
 })
 export class UploadQnaComponent implements OnInit {
-  selectedOption: string;
+  selectedOption: string = "";
   question: string = "";
   noOfOptions: number = 5
-  options: string[] = [];
+  options: string[] = new Array(5);
   questionDifficulty: string = "Easy";
   emptyValidator = new FormControl('', [Validators.required]);
   difficultyOptions: string[] = ['Hard', 'Medium', 'Easy'];
   constructor() { }
 
   ngOnInit() {
-    let i  = this.noOfOptions;
-    console.log(this.noOfOptions, this.options);
     
-    while(i !== 0) {
-      this.options.unshift("Option" + i);
-      i--;
-    }
+  }
+
+  trackByIndex(index: number, obj: any): any {
+    return index;
   }
 
   onSubmit() {
-    console.log(this.question);
-    console.log(this.options);
-    console.log(this.selectedOption);
-    console.log(this.questionDifficulty);
     
+    console.log("Question: ", this.question);
+    console.log("Options: ", this.options);
+    console.log("SelectedOption: ", this.selectedOption);
+    console.log("Difficulty: ", this.questionDifficulty);
   }
 
   onReset(form) {
@@ -42,5 +40,5 @@ export class UploadQnaComponent implements OnInit {
   getErrorMessage() {
     return this.emptyValidator.hasError('required') ? 
       'please enter a question' : ''
-  }
+  }  
 }

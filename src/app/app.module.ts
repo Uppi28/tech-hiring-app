@@ -12,6 +12,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { Routes, RouterModule } from "@angular/router";
 import { UiTestComponent } from './ui-test/ui-test.component';
 import { HomeComponent } from './home/home.component';
+import { HeaderComponent } from './header/header.component';
+import { AppRoutingModule } from './app-routing.module';
+import { QuestionsComponent } from './questions/questions.component';
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
@@ -25,7 +28,9 @@ const appRoutes: Routes = [
     AppComponent,
     UploadQnaComponent,
     HomeComponent,
-    UiTestComponent
+    UiTestComponent,
+    HeaderComponent,
+    QuestionsComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +44,8 @@ const appRoutes: Routes = [
     MatSelectModule,
     MatCardModule,
     HttpClientModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

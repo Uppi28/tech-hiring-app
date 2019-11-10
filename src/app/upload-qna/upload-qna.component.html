@@ -4,8 +4,6 @@
         <mat-label>Choose difficulty level</mat-label>
         <mat-select [(value)]="questionDifficulty">
             <mat-option *ngFor="let difficulty of difficultyOptions" [value]="difficulty">{{difficulty}}</mat-option>
-            <!-- <mat-option value="Medium">Medium</mat-option>
-            <mat-option value="Easy">Easy</mat-option> -->
         </mat-select>
     </mat-form-field>
 </div>
@@ -14,27 +12,39 @@
     <!-- Question -->
     <mat-form-field>
         <mat-label>Enter the question here</mat-label>
-        <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" required
-            [formControl]="emptyValidator"></textarea>
+        <textarea
+            matInput
+            cdkTextareaAutosize
+            #autosize="cdkTextareaAutosize"
+            required
+            [formControl]="emptyValidator"
+            [(ngModel)]="question"></textarea>
         <mat-error *ngIf="commentFC?.hasError('required')">
-            Comment is required.
+            Question is required.
         </mat-error>
     </mat-form-field>
 
     <!-- Options -->
     <div class="optionsWrapper">
-        <mat-form-field *ngFor="let option of options">
-            <mat-label>{{option}}</mat-label>
-            <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize"></textarea>
+        <mat-form-field *ngFor="let option of options;let index = index;trackBy:trackByIndex;">
+            <mat-label>Option {{options[index]}}</mat-label>
+            <textarea 
+                matInput
+                cdkTextareaAutosize
+                #autosize="cdkTextareaAutosize"
+                required 
+                [value]="options[index]"
+                [(ngModel)]="options[index]"
+                name="name"></textarea>
         </mat-form-field>
     </div>
 
     <!-- Correct option selector -->
     <mat-card>
         <mat-form-field>
-            <mat-label>The correct answer is:</mat-label>
-            <mat-select [(value)]="correctOption">
-                <mat-option *ngFor="let option of options" [value]="option">{{option}}</mat-option>
+            <mat-label>Choose the correct option</mat-label>
+            <mat-select [(value)]="selectedOption">
+                <mat-option *ngFor="let option of options; let index=index;trackBy: trackByIndex;" [value]="options[index]">{{options[index]}}</mat-option>
             </mat-select>
         </mat-form-field>
     </mat-card>
