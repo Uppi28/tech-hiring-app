@@ -1,1 +1,25 @@
-<p>home works!</p>
+<div class="tabContentWrapper">
+    <div class="alignCenter" style="flex-direction: column;">
+        <div class="introTextMain">Hi...</div>
+        <div class="introText">Welcome to Musigma !</div>
+        <div class="introText">Please select "Start the test" to proceed to your online interview</div>
+        <div class="introText">Click on "What we do" to know more about Musigma</div>
+    </div>
+
+
+    <div class="alignCenter routerWrapper">
+        <button mat-raised-button class="navButtons">
+            <div class="alignCenter" (click)="goToMusigma()">
+                <div class="noMargin">What we do</div>
+                <i class="material-icons">contact_support</i>
+            </div>
+        </button>
+
+        <button mat-raised-button class="navButtons">
+            <div routerLink='/testview' class="alignCenter">
+                <div class="noMargin">Start the test</div>
+                <i class="material-icons">play_circle_filled</i>
+            </div>
+        </button>
+    </div>
+</div>

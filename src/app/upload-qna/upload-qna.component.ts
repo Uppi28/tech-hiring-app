@@ -10,10 +10,14 @@ export class UploadQnaComponent implements OnInit {
   selectedOption: string = "";
   question: string = "";
   noOfOptions: number = 5
-  options: string[] = new Array(5);
   questionDifficulty: string = "Easy";
   emptyValidator = new FormControl('', [Validators.required]);
   difficultyOptions: string[] = ['Hard', 'Medium', 'Easy'];
+  technologies: string[] = ['HTML', 'CSS', 'JS', 'Angular', 'React'];
+  selectedTech: string = "HTML";
+  totalOptions: number = 5
+  options: string[] = new Array(this.totalOptions);
+  allQuestions: object[] = []
   constructor() { }
 
   ngOnInit() {
@@ -25,16 +29,20 @@ export class UploadQnaComponent implements OnInit {
   }
 
   onSubmit() {
-    
-    console.log("Question: ", this.question);
-    console.log("Options: ", this.options);
-    console.log("SelectedOption: ", this.selectedOption);
-    console.log("Difficulty: ", this.questionDifficulty);
+    let tempObj: object = {};
+    tempObj['Question'] = this.question;
+    tempObj['Options'] = this.options;
+    tempObj['selectedOption'] = this.selectedOption;
+    tempObj['difficulty'] = this.questionDifficulty;
+    tempObj['technology'] = this.selectedTech;
+    this.allQuestions.push(tempObj);
+    console.log(JSON.stringify(this.allQuestions));
   }
 
   onReset(form) {
-    console.log(form);
-    
+    this.question = "";
+    this.options = new Array(5);
+    this.selectedOption = "";
   }
 
   getErrorMessage() {

@@ -1,8 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background: #fafafa; }
+/* html, body { height: 100%; } */
+body { 
+    margin: 0; 
+    font-family: Roboto, "Helvetica Neue", sans-serif; 
+    background: #fafafa;
+}
+
 
 .alignCenter{
     display: flex;
@@ -24,4 +29,21 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background:
 
 .width100{
     width: 100%;
+}
+
+.noMargin { 
+    margin: 0;
+}
+
+.noPadding {
+    padding: 0;
+}
+
+.mousePointer{
+    cursor: pointer;
+}
+
+.tabContentWrapper{
+    margin-top: 51px;
+    padding: 1rem;
 }

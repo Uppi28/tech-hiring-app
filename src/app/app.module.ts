@@ -9,28 +9,20 @@ import { MatInputModule, MatRadioModule, MatButtonModule, MatCardModule, MatSele
 import { UploadQnaComponent } from './upload-qna/upload-qna.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { Routes, RouterModule } from "@angular/router";
-import { UiTestComponent } from './ui-test/ui-test.component';
 import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
 import { AppRoutingModule } from './app-routing.module';
 import { QuestionsComponent } from './questions/questions.component';
-
-const appRoutes: Routes = [
-  {path: '', component: HomeComponent},
-  {path: 'uitest', component: UiTestComponent},
-  {path: 'questions', component: UploadQnaComponent}
-]
-
+import { TestviewComponent } from './testview/testview.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UploadQnaComponent,
     HomeComponent,
-    UiTestComponent,
     HeaderComponent,
-    QuestionsComponent
+    QuestionsComponent,
+    TestviewComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +36,7 @@ const appRoutes: Routes = [
     MatSelectModule,
     MatCardModule,
     HttpClientModule,
-    RouterModule.forRoot(appRoutes),
+    ReactiveFormsModule,
     AppRoutingModule
   ],
   providers: [],

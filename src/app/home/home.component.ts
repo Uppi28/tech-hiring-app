@@ -12,4 +12,8 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
   }
 
+  goToMusigma() {
+    window.open("https://www.mu-sigma.com");
+  }
+
 }

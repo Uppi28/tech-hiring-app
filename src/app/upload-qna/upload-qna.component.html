@@ -1,56 +1,60 @@
-<!-- Difficulty selector -->
-<div class="difficultyWrapper">
-    <mat-form-field>
-        <mat-label>Choose difficulty level</mat-label>
-        <mat-select [(value)]="questionDifficulty">
-            <mat-option *ngFor="let difficulty of difficultyOptions" [value]="difficulty">{{difficulty}}</mat-option>
-        </mat-select>
-    </mat-form-field>
-</div>
-
-<form #form="ngForm">
-    <!-- Question -->
-    <mat-form-field>
-        <mat-label>Enter the question here</mat-label>
-        <textarea
-            matInput
-            cdkTextareaAutosize
-            #autosize="cdkTextareaAutosize"
-            required
-            [formControl]="emptyValidator"
-            [(ngModel)]="question"></textarea>
-        <mat-error *ngIf="commentFC?.hasError('required')">
-            Question is required.
-        </mat-error>
-    </mat-form-field>
-
-    <!-- Options -->
-    <div class="optionsWrapper">
-        <mat-form-field *ngFor="let option of options;let index = index;trackBy:trackByIndex;">
-            <mat-label>Option {{options[index]}}</mat-label>
-            <textarea 
-                matInput
-                cdkTextareaAutosize
-                #autosize="cdkTextareaAutosize"
-                required 
-                [value]="options[index]"
-                [(ngModel)]="options[index]"
-                name="name"></textarea>
+<div class="tabContentWrapper">
+    <!-- Difficulty selector -->
+    <div class="difficultyWrapper">
+        <mat-form-field>
+            <mat-label>Choose difficulty level</mat-label>
+            <mat-select [(value)]="questionDifficulty">
+                <mat-option *ngFor="let difficulty of difficultyOptions" [value]="difficulty">{{difficulty}}
+                </mat-option>
+            </mat-select>
         </mat-form-field>
     </div>
 
-    <!-- Correct option selector -->
-    <mat-card>
+    <!-- Technology selector -->
+    <div class="difficultyWrapper">
         <mat-form-field>
-            <mat-label>Choose the correct option</mat-label>
-            <mat-select [(value)]="selectedOption">
-                <mat-option *ngFor="let option of options; let index=index;trackBy: trackByIndex;" [value]="options[index]">{{options[index]}}</mat-option>
+            <mat-label>Choose difficulty level</mat-label>
+            <mat-select [(value)]="selectedTech">
+                <mat-option *ngFor="let tech of technologies" [value]="tech">{{tech}}
+                </mat-option>
             </mat-select>
         </mat-form-field>
-    </mat-card>
-</form>
-<!-- Submit/Clear options -->
-<div class="width100 alignRight" style="justify-content: space-between;">
-    <button mat-raised-button color="warn" (click)="onReset(form)">Warn</button>
-    <button mat-raised-button color="primary" (click)="onSubmit()">Primary</button>
+    </div>
+
+    <form #form="ngForm">
+        <!-- Question -->
+        <mat-form-field>
+            <mat-label>Enter the question here</mat-label>
+            <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" required
+                [formControl]="emptyValidator" [(ngModel)]="question"></textarea>
+            <mat-error *ngIf="commentFC?.hasError('required')">
+                Question is required.
+            </mat-error>
+        </mat-form-field>
+
+        <!-- Options -->
+        <div class="optionsWrapper">
+            <mat-form-field *ngFor="let option of options;let index = index;trackBy:trackByIndex;">
+                <mat-label>Option {{options[index]}}</mat-label>
+                <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" required [value]="options[index]"
+                    [(ngModel)]="options[index]" name="name"></textarea>
+            </mat-form-field>
+        </div>
+
+        <!-- Correct option selector -->
+        <mat-card>
+            <mat-form-field>
+                <mat-label>Choose the correct option</mat-label>
+                <mat-select [(value)]="selectedOption">
+                    <mat-option *ngFor="let option of options; let index=index;trackBy: trackByIndex;"
+                        [value]="options[index]">{{options[index]}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </mat-card>
+    </form>
+    <!-- Submit/Clear options -->
+    <div class="width100 alignRight" style="justify-content: space-between;">
+        <button mat-raised-button color="warn" (click)="onReset(form)">Warn</button>
+        <button mat-raised-button color="primary" (click)="onSubmit()">Primary</button>
+    </div>
 </div>
