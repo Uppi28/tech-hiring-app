@@ -1,5 +1,6 @@
 export const quesData = [
   {
+    "quesID": "H001",
     "Question": "What does HTML stand for?",
     "Options": [
       "Home tool Markup Language",
@@ -13,6 +14,7 @@ export const quesData = [
     "technology": "HTML"
   },
   {
+    "quesID": "H002",
     "Question": "Who decides the web standards?",
     "Options": [
       "Microsoft",
@@ -26,6 +28,7 @@ export const quesData = [
     "technology": "HTML"
   },
   {
+    "quesID": "H003",
     "Question": "Choose the correct HTML element to define emphasized text",
     "Options": [
       "<i>",
@@ -39,6 +42,7 @@ export const quesData = [
     "technology": "HTML"
   },
   {
+    "quesID": "H004",
     "Question": "What is the correct HTML for creating a hyperlink?",
     "Options": [
       "<a href=\"http://www.w3schools.com\">W3Schools</a>",
@@ -52,6 +56,7 @@ export const quesData = [
     "technology": "HTML"
   },
   {
+    "quesID": "H005",
     "Question": "Inline elements are normally displayed with starting a new line.",
     "Options": [
       "True ",
@@ -65,6 +70,7 @@ export const quesData = [
     "technology": "HTML"
   },
   {
+    "quesID": "H006",
     "Question": "How can you make a numbered list?",
     "Options": [
       "<ul>",
@@ -78,6 +84,7 @@ export const quesData = [
     "technology": "HTML"
   },
   {
+    "quesID": "H007",
     "Question": "What is the correct HTML for making a checkbox?",
     "Options": [
       "<input type=\"check\">",
@@ -91,6 +98,7 @@ export const quesData = [
     "technology": "HTML"
   },
   {
+    "quesID": "H008",
     "Question": "Which HTML attribute specifies an alternate text for an image, if the image cannot be displayed?",
     "Options": [
       "alt",
@@ -104,6 +112,7 @@ export const quesData = [
     "technology": "HTML"
   },
   {
+    "quesID": "H009",
     "Question": "9.\tWhich doctype is correct for HTML5?",
     "Options": [
       "a.\t<!DOCTYPE html>",
@@ -117,6 +126,7 @@ export const quesData = [
     "technology": "HTML"
   },
   {
+    "quesID": "H010",
     "Question": "10.\tIn HTML, what does the <aside> element define?",
     "Options": [
       "A navigation list to be shown at the left side of the page",
@@ -130,6 +140,7 @@ export const quesData = [
     "technology": "HTML"
   },
   {
+    "quesID": "H021",
     "Question": "What does CSS stand for?",
     "Options": [
       "Colorful Style Sheets",
@@ -140,9 +151,10 @@ export const quesData = [
     ],
     "selectedOption": "Cascading Style Sheets",
     "difficulty": "Easy",
-    "technology": "HTML"
+    "technology": "CSS"
   },
   {
+    "quesID": "H022",
     "Question": "What is the correct HTML for referring to an external style sheet?",
     "Options": [
       "<stylesheet>mystyle.css</stylesheet>",
@@ -153,9 +165,10 @@ export const quesData = [
     ],
     "selectedOption": "<link rel=\"stylesheet\" type=\"text/css\" href=\"mystyle.css\">",
     "difficulty": "Easy",
-    "technology": "HTML"
+    "technology": "CSS"
   },
   {
+    "quesID": "H023",
     "Question": "Which HTML tag is used to define an internal style sheet?",
     "Options": [
       "<css>",
@@ -166,9 +179,10 @@ export const quesData = [
     ],
     "selectedOption": "b.\t<style>",
     "difficulty": "Easy",
-    "technology": "HTML"
+    "technology": "CSS"
   },
   {
+    "quesID": "H024",
     "Question": "Which property is used to change the background color?",
     "Options": [
       "bgcolor",
@@ -179,9 +193,10 @@ export const quesData = [
     ],
     "selectedOption": "background-color",
     "difficulty": "Easy",
-    "technology": "HTML"
+    "technology": "CSS"
   },
   {
+    "quesID": "H001",
     "Question": "How do you display hyperlinks without an underline?",
     "Options": [
       "a {text-decoration:none;}",
@@ -195,6 +210,7 @@ export const quesData = [
     "technology": "HTML"
   },
   {
+    "quesID": "H001",
     "Question": "How do you make each word in a text start with a capital letter?",
     "Options": [
       "text-style:capitalize",
@@ -208,6 +224,7 @@ export const quesData = [
     "technology": "CSS"
   },
   {
+    "quesID": "H001",
     "Question": "How do you display a border like this: The top border = 10 pixels, The bottom border = 5 pixels, The left border = 20 pixels, The right border = 1pixel?",
     "Options": [
       "border-width:10px 1px 5px 20px;",
@@ -221,6 +238,7 @@ export const quesData = [
     "technology": "CSS"
   },
   {
+    "quesID": "H001",
     "Question": "When using the padding property; are you allowed to use negative values?",
     "Options": [
       "Yes",
@@ -234,6 +252,7 @@ export const quesData = [
     "technology": "CSS"
   },
   {
+    "quesID": "H001",
     "Question": "How do you select all p elements inside a div element?",
     "Options": [
       "div p",
@@ -247,6 +266,7 @@ export const quesData = [
     "technology": "CSS"
   },
   {
+    "quesID": "H001",
     "Question": "What is the default value of the position property?",
     "Options": [
       "Relative",
