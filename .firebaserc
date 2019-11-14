@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "tech-hiring-app": {
+      "hosting": {
+        "tech-hiring-app": [
+          "tech-hiring-app"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "tech-hiring-app"
+  }
+}
