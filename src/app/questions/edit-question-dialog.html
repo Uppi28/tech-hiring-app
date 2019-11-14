@@ -1,11 +1,21 @@
-<h1 mat-dialog-title>Hi {{data.name}}</h1>
-<div mat-dialog-content>
-  <p>What's your favorite animal?</p>
+<div class="questionHolder">
   <mat-form-field>
-    <input matInput [(ngModel)]="data.animal">
+    <input matInput [(ngModel)]="data.Question">
   </mat-form-field>
 </div>
-<div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">No Thanks</button>
-  <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Ok</button>
+<div *ngFor="let option of data.Options; let index = index; trackBy: trackByIndex" class="optionsHolder alignCenter" style="justify-content: space-evenly;">
+  <mat-form-field>
+      <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" required [value]="data.Options[index]"
+        [(ngModel)]="data.Options[index]" name="name"></textarea>
+  </mat-form-field>
+  <button mat-mini-fab aria-label="icon-button with a add icon" class="addOption" (click)="addOption(index)">
+    <mat-icon>add</mat-icon>
+  </button>
+  <button mat-mini-fab aria-label="icon-button with a add icon" class="removeOption" (click)="removeOption(index)">
+    <mat-icon>remove</mat-icon>
+  </button>
+</div>
+<div mat-dialog-actions class="actionBtnsWrapper">
+  <button mat-raised-button (click)="onResetClick()" color="warn">Reset Changes</button>
+  <button mat-raised-button [mat-dialog-close]="data.animal" cdkFocusInitial  color="primary" (click)="onSubmitChanges()">Submit Changes</button>
 </div>

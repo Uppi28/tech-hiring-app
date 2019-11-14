@@ -1,6 +1,6 @@
 <div class="tabContentWrapper">
     <mat-card *ngFor="let list of quesData; let index = index">
-            <button mat-mini-fab color="warn" class="pull-right" (click)="openDialog()">
+            <button mat-mini-fab color="warn" class="pull-right" (click)="openDialog(list)">
                 <i class="material-icons">create</i>
             </button>
         <div>{{list.Question}}</div>

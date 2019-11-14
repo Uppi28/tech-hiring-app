@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatFormFieldModule } from "@angular/material/form-field";
-import { MatInputModule, MatRadioModule, MatButtonModule, MatCardModule, MatSelectModule, MatDialogModule } from "@angular/material";
+import { MatInputModule, MatRadioModule, MatButtonModule, MatCardModule, MatSelectModule, MatDialogModule, MatIconModule } from "@angular/material";
 import { UploadQnaComponent } from './upload-qna/upload-qna.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -40,6 +40,7 @@ import { TestviewComponent } from './testview/testview.component';
     MatSelectModule,
     MatCardModule,
     MatDialogModule,
+    MatIconModule,
     HttpClientModule,
     ReactiveFormsModule,
     AppRoutingModule

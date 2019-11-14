@@ -1,10 +1,10 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { quesData } from "./questions";
 
 export interface DialogData {
-  animal: string;
-  name: string;
+  quesDatum: object;
+  Options: string[]
 }
 
 @Component({
@@ -17,27 +17,18 @@ export class QuestionsComponent implements OnInit {
   constructor(public dialog: MatDialog) { 
   }
 
-  animal: string;
-  name: string;
   quesData = quesData;
-
+  quesDatum: object;
+  
   ngOnInit() {
-    console.log(quesData);
   }
 
-  editQuestion(index) {
-    console.log(index);
-  }
-
-  openDialog(): void {
+  openDialog(editQues): void {
     const dialogRef = this.dialog.open(EditQuestionDialog, {
-      width: '250px',
-      data: {name: this.name, animal: this.animal}
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      this.animal = result;
+      width: '80vw',
+      maxHeight: '90vh',
+      // data: JSON.parse(JSON.stringify(editQues)) // To immutably send data
+      data: editQues
     });
   }
 
@@ -46,6 +37,7 @@ export class QuestionsComponent implements OnInit {
 @Component({
   selector: 'edit-question-dialog',
   templateUrl: 'edit-question-dialog.html',
+  styleUrls: ['edit-question-dialog.css']
 })
 export class EditQuestionDialog {
 
@@ -53,8 +45,24 @@ export class EditQuestionDialog {
     public dialogRef: MatDialogRef<EditQuestionDialog>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
 
-  onNoClick(): void {
-    this.dialogRef.close();
+  
+  onResetClick(): void {
+    console.log(this.data);
   }
 
+  trackByIndex(index: number, obj: any): any {
+    return index;
+  }
+
+  onSubmitChanges() {
+    console.log(this.data);
+  }
+
+  addOption(index) {
+    console.log(index);
+    this.data.Options.splice(index+1, 0, "");
+  }
+  removeOption(index) {
+    this.data.Options.splice(index,1)
+  }
 }

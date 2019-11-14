@@ -1,0 +1,20 @@
+.optionsHolder{
+    padding: 0 3rem;
+}
+.questionHolder{
+    width: 100%;
+}
+mat-form-field{
+    width: 80%;
+}
+.actionBtnsWrapper{
+    justify-content: space-between;
+}
+.addOption{
+    color: white;
+    background: green;
+}
+.removeOption{
+    color: white;
+    background: red;
+}
