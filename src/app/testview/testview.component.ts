@@ -12,8 +12,18 @@ export class TestviewComponent implements OnInit {
   constructor() { }
 
   quesData = quesData
+  selectedOptions: number[] = new Array(quesData.length);
+
   ngOnInit() {
-    console.log(this.quesData[0].Options);
+    let answerData = [...this.quesData] 
+    let d,i;
+    answerData.map((d,i) => {
+      answerData[i]['userAns'] = "";
+    })
+    console.log(answerData);
+  } 
+  submitTest(updatedData) {
+    console.log(updatedData);
     
   }
 

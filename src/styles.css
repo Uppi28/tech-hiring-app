@@ -8,6 +8,10 @@ body {
     background: #fafafa;
 }
 
+html, body{
+    width: 100%;
+}
+
 
 .alignCenter{
     display: flex;

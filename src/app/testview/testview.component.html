@@ -1,15 +1,12 @@
 <div class="tabContentWrapper">
-    <div class="tabContentWrapper">
-        <mat-card *ngFor="let list of quesData; let index = index">
-            <button mat-mini-fab color="warn" class="pull-right" (click)="openDialog(list)">
-                <i class="material-icons">create</i>
-            </button>
-            <div>{{list.Question}}</div>
-            <mat-radio-group [(ngModel)]="selectedOption" class="options">
-                <mat-radio-button *ngFor="let option of list.Options" [value]="option">
-                    {{option}}
-                </mat-radio-button>
-            </mat-radio-group>
-        </mat-card>
-    </div>
+    <mat-card *ngFor="let quesObj of quesData; let index = index">
+        <div class="questionWrap">{{quesObj.Question}}</div>
+        <mat-radio-group class="options" [(ngModel)]="quesObj['userAns']">
+            <div *ngFor="let option of quesObj['Options']; let i = index;" class="alignCenter">
+                <mat-radio-button [value]="quesObj.Options[i]" style="line-break: break-word;"></mat-radio-button>
+                <label>{{quesObj.Options[i]}}</label>
+            </div>
+        </mat-radio-group>
+    </mat-card>
 </div>
+<button mat-raised-button color="primary" class="submitTestBtn" (click)="submitTest(quesData)">Submit Test</button>
