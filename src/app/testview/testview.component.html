@@ -1,1 +1,15 @@
-<div class="tabContentWrapper">Test view </div>
+<div class="tabContentWrapper">
+    <div class="tabContentWrapper">
+        <mat-card *ngFor="let list of quesData; let index = index">
+            <button mat-mini-fab color="warn" class="pull-right" (click)="openDialog(list)">
+                <i class="material-icons">create</i>
+            </button>
+            <div>{{list.Question}}</div>
+            <mat-radio-group [(ngModel)]="selectedOption" class="options">
+                <mat-radio-button *ngFor="let option of list.Options" [value]="option">
+                    {{option}}
+                </mat-radio-button>
+            </mat-radio-group>
+        </mat-card>
+    </div>
+</div>
