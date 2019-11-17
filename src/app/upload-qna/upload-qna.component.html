@@ -13,7 +13,7 @@
     <!-- Technology selector -->
     <div class="difficultyWrapper">
         <mat-form-field>
-            <mat-label>Choose difficulty level</mat-label>
+            <mat-label>Choose the technology</mat-label>
             <mat-select [(value)]="selectedTech">
                 <mat-option *ngFor="let tech of technologies" [value]="tech">{{tech}}
                 </mat-option>
@@ -25,20 +25,24 @@
         <!-- Question -->
         <mat-form-field>
             <mat-label>Enter the question here</mat-label>
-            <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" required
-                [formControl]="emptyValidator" [(ngModel)]="question"></textarea>
-            <mat-error *ngIf="commentFC?.hasError('required')">
-                Question is required.
-            </mat-error>
+            <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize"
+                name="question" [(ngModel)]="question"></textarea>
         </mat-form-field>
 
         <!-- Options -->
-        <div class="optionsWrapper">
-            <mat-form-field *ngFor="let option of options;let index = index;trackBy:trackByIndex;">
+        <div class="optionsWrapper alignCenter" *ngFor="let option of options;let index = index;trackBy:trackByIndex;">
+            <mat-form-field>
                 <mat-label>Option {{options[index]}}</mat-label>
-                <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" required [value]="options[index]"
+                <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" [value]="options[index]"
                     [(ngModel)]="options[index]" name="name"></textarea>
             </mat-form-field>
+            <button mat-mini-fab aria-label="icon-button with a add icon" class="addOption" (click)="addOption(index)">
+                <mat-icon>add</mat-icon>
+            </button>
+            <button mat-mini-fab aria-label="icon-button with a remove icon" class="removeOption"
+                (click)="removeOption(index)">
+                <mat-icon>remove</mat-icon>
+            </button>
         </div>
 
         <!-- Correct option selector -->
@@ -54,7 +58,7 @@
     </form>
     <!-- Submit/Clear options -->
     <div class="width100 alignRight" style="justify-content: space-between;">
-        <button mat-raised-button color="warn" (click)="onReset(form)">Submit Question</button>
-        <button mat-raised-button color="primary" (click)="onSubmit()">Reset form</button>
+        <button mat-raised-button color="warn" (click)="onReset(form)">Reset Question</button>
+        <button mat-raised-button color="primary" (click)="onSubmit()">Submit form</button>
     </div>
 </div>

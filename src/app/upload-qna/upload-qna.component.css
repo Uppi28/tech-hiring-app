@@ -1,5 +1,6 @@
 mat-form-field, mat-radio-group, mat-radio-button{
-    width: 100%;
+    width: calc(100% - 2rem);
+    padding: 0 1rem;
 }
 
 mat-card{
@@ -13,4 +14,16 @@ mat-card{
 
 .optionsWrapper{
     padding: 0 2rem;
+    justify-content: space-evenly;
+}
+
+.addOption{
+    color: white;
+    background: green;
+    margin: 0 0.5rem;
+}
+.removeOption{
+    color: white;
+    background: red;
+    margin: 0 0.5rem;
 }

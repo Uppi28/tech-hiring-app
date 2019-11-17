@@ -17,7 +17,8 @@ export class UploadQnaComponent implements OnInit {
   selectedTech: string = "HTML";
   totalOptions: number = 5
   options: string[] = new Array(this.totalOptions);
-  allQuestions: object[] = []
+  allQuestions: object[] = [];
+  
   constructor() { }
 
   ngOnInit() {
@@ -29,7 +30,9 @@ export class UploadQnaComponent implements OnInit {
   }
 
   onSubmit() {
+    // Resetting temporarily
     let tempObj: object = {};
+    // Setting values on update
     tempObj['Question'] = this.question;
     tempObj['Options'] = this.options;
     tempObj['selectedOption'] = this.selectedOption;
@@ -45,8 +48,16 @@ export class UploadQnaComponent implements OnInit {
     this.selectedOption = "";
   }
 
-  getErrorMessage() {
-    return this.emptyValidator.hasError('required') ? 
-      'please enter a question' : ''
-  }  
+  addOption(index) {
+    console.log(index);
+    this.options.splice(index+1, 0, "");
+    this.totalOptions = this.options.length;
+    console.log(this.totalOptions);
+    
+  }
+  removeOption(index) {
+    this.options.splice(index,1)
+    this.totalOptions = this.options.length
+    console.log(this.totalOptions)
+  }
 }
