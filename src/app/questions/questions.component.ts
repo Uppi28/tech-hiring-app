@@ -4,7 +4,8 @@ import { quesData } from "./questions";
 
 export interface DialogData {
   quesDatum: object;
-  Options: string[]
+  Options: string[];
+  Question: string;
 }
 
 @Component({
