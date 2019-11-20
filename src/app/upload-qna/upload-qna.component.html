@@ -49,7 +49,7 @@
         <mat-card>
             <mat-form-field>
                 <mat-label>Choose the correct option</mat-label>
-                <mat-select [(value)]="selectedOption">
+                <mat-select [(value)]="correctOption">
                     <mat-option *ngFor="let option of options; let index=index;trackBy: trackByIndex;"
                         [value]="options[index]">{{options[index]}}</mat-option>
                 </mat-select>

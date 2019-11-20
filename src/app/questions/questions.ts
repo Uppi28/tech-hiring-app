@@ -9,7 +9,7 @@ export const quesData = [
       "All of the above",
       "None of the above"
     ],
-    "selectedOption": "Hyper text Markup Language",
+    "correctOption": "Hyper text Markup Language",
     "difficulty": "Easy",
     "technology": "HTML"
   },
@@ -23,7 +23,7 @@ export const quesData = [
       "The world wide web consortium",
       "None of the above"
     ],
-    "selectedOption": "The world wide web consortium",
+    "correctOption": "The world wide web consortium",
     "difficulty": "Easy",
     "technology": "HTML"
   },
@@ -37,7 +37,7 @@ export const quesData = [
       "All of the above",
       "None of the above"
     ],
-    "selectedOption": "<em>",
+    "correctOption": "<em>",
     "difficulty": "Easy",
     "technology": "HTML"
   },
@@ -51,7 +51,7 @@ export const quesData = [
       "<a name=\"http://www.w3schools.com\">W3Schools.com</a>",
       "None of the above"
     ],
-    "selectedOption": "<a href=\"http://www.w3schools.com\">W3Schools</a>",
+    "correctOption": "<a href=\"http://www.w3schools.com\">W3Schools</a>",
     "difficulty": "Easy",
     "technology": "HTML"
   },
@@ -65,7 +65,7 @@ export const quesData = [
       null,
       null
     ],
-    "selectedOption": "False",
+    "correctOption": "False",
     "difficulty": "Easy",
     "technology": "HTML"
   },
@@ -79,7 +79,7 @@ export const quesData = [
       "<ol>",
       "None of the above"
     ],
-    "selectedOption": "<ol>",
+    "correctOption": "<ol>",
     "difficulty": "Easy",
     "technology": "HTML"
   },
@@ -93,7 +93,7 @@ export const quesData = [
       "<input type=\"checkbox\">",
       "None of the above"
     ],
-    "selectedOption": "<input type=\"checkbox\">",
+    "correctOption": "<input type=\"checkbox\">",
     "difficulty": "Easy",
     "technology": "HTML"
   },
@@ -107,7 +107,7 @@ export const quesData = [
       "All of the above ",
       "None of the above"
     ],
-    "selectedOption": "alt",
+    "correctOption": "alt",
     "difficulty": "Easy",
     "technology": "HTML"
   },
@@ -121,7 +121,7 @@ export const quesData = [
       "All of the above ",
       "None of the above"
     ],
-    "selectedOption": "a.\t<!DOCTYPE html>",
+    "correctOption": "a.\t<!DOCTYPE html>",
     "difficulty": "Easy",
     "technology": "HTML"
   },
@@ -135,7 +135,7 @@ export const quesData = [
       "There is no aside element in HTML its a PHP element",
       "I dont know"
     ],
-    "selectedOption": "Content aside from the page content",
+    "correctOption": "Content aside from the page content",
     "difficulty": "Easy",
     "technology": "HTML"
   },
@@ -149,7 +149,7 @@ export const quesData = [
       "Computer Style Sheets",
       "None of the above"
     ],
-    "selectedOption": "Cascading Style Sheets",
+    "correctOption": "Cascading Style Sheets",
     "difficulty": "Easy",
     "technology": "CSS"
   },
@@ -163,7 +163,7 @@ export const quesData = [
       "None of the above ",
       "All of the above"
     ],
-    "selectedOption": "<link rel=\"stylesheet\" type=\"text/css\" href=\"mystyle.css\">",
+    "correctOption": "<link rel=\"stylesheet\" type=\"text/css\" href=\"mystyle.css\">",
     "difficulty": "Easy",
     "technology": "CSS"
   },
@@ -177,7 +177,7 @@ export const quesData = [
       "None of the above",
       null
     ],
-    "selectedOption": "b.\t<style>",
+    "correctOption": "b.\t<style>",
     "difficulty": "Easy",
     "technology": "CSS"
   },
@@ -191,7 +191,7 @@ export const quesData = [
       null,
       null
     ],
-    "selectedOption": "background-color",
+    "correctOption": "background-color",
     "difficulty": "Easy",
     "technology": "CSS"
   },
@@ -205,7 +205,7 @@ export const quesData = [
       "a {text-decoration:no-underline;}",
       "None of the above"
     ],
-    "selectedOption": "a {text-decoration:none;}",
+    "correctOption": "a {text-decoration:none;}",
     "difficulty": "Easy",
     "technology": "HTML"
   },
@@ -219,7 +219,7 @@ export const quesData = [
       "transform:capitalize",
       null
     ],
-    "selectedOption": "text-transform:capitalize",
+    "correctOption": "text-transform:capitalize",
     "difficulty": "Easy",
     "technology": "CSS"
   },
@@ -233,7 +233,7 @@ export const quesData = [
       "border-width:5px 20px 10px 1px;",
       "None of the above"
     ],
-    "selectedOption": "border-width:10px 1px 5px 20px;",
+    "correctOption": "border-width:10px 1px 5px 20px;",
     "difficulty": "Easy",
     "technology": "CSS"
   },
@@ -247,7 +247,7 @@ export const quesData = [
       null,
       null
     ],
-    "selectedOption": "No",
+    "correctOption": "No",
     "difficulty": "Easy",
     "technology": "CSS"
   },
@@ -261,7 +261,7 @@ export const quesData = [
       null,
       null
     ],
-    "selectedOption": "div p",
+    "correctOption": "div p",
     "difficulty": "Easy",
     "technology": "CSS"
   },
@@ -275,7 +275,7 @@ export const quesData = [
       "Fixed",
       "None of the above"
     ],
-    "selectedOption": "Static",
+    "correctOption": "Static",
     "difficulty": "Easy",
     "technology": "CSS"
   }

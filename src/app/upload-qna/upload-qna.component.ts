@@ -9,7 +9,7 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./upload-qna.component.css']
 })
 export class UploadQnaComponent implements OnInit {
-  selectedOption: string = "";
+  correctOption: string = "";
   question: string = "";
   noOfOptions: number = 5
   questionDifficulty: string = "Easy";
@@ -37,7 +37,7 @@ export class UploadQnaComponent implements OnInit {
     // Setting values on update
     tempObj['Question'] = this.question;
     tempObj['Options'] = this.options;
-    tempObj['selectedOption'] = this.selectedOption;
+    tempObj['correctOption'] = this.correctOption;
     tempObj['difficulty'] = this.questionDifficulty;
     tempObj['technology'] = this.selectedTech;
     this.quesService.uploadQuestion(tempObj).subscribe(res => console.log("Your question with ID" + res['name'] + "has been submitted"))
@@ -47,7 +47,7 @@ export class UploadQnaComponent implements OnInit {
   onReset() {
     this.question = "";
     this.options = new Array(5);
-    this.selectedOption = "";
+    this.correctOption = "";
   }
 
   addOption(index) {

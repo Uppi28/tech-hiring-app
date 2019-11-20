@@ -12,7 +12,7 @@ export class TestviewComponent implements OnInit {
   constructor() { }
 
   quesData = quesData
-  selectedOptions: number[] = new Array(quesData.length);
+  correctOptions: number[] = new Array(quesData.length);
 
   ngOnInit() {
     let answerData = [...this.quesData] 

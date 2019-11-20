@@ -45,8 +45,10 @@ export class QuestionsComponent implements OnInit {
       data: {quesData: JSON.parse(JSON.stringify(this.quesData[this.editQuesIndex])), key: this.editQuesIndex}
     });
 
-    dialogRef.afterClosed().subscribe(result => {      
-      this.updateQuestion(result);
+    dialogRef.afterClosed().subscribe(result => {
+      if(result){
+        this.updateQuestion(result);
+      }      
     });
   }
 
