@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from "@angular/forms";
+import { QuestionsService } from "../shared/questions.service";
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-upload-qna',
@@ -19,7 +21,7 @@ export class UploadQnaComponent implements OnInit {
   options: string[] = new Array(this.totalOptions);
   allQuestions: object[] = [];
   
-  constructor() { }
+  constructor(private quesService: QuestionsService, private http: HttpClient) { }
 
   ngOnInit() {
     
@@ -30,7 +32,7 @@ export class UploadQnaComponent implements OnInit {
   }
 
   onSubmit() {
-    // Resetting temporarily
+    // Resetting before assigning values
     let tempObj: object = {};
     // Setting values on update
     tempObj['Question'] = this.question;
@@ -38,8 +40,7 @@ export class UploadQnaComponent implements OnInit {
     tempObj['selectedOption'] = this.selectedOption;
     tempObj['difficulty'] = this.questionDifficulty;
     tempObj['technology'] = this.selectedTech;
-    this.allQuestions.push(tempObj);
-    console.log(JSON.stringify(this.allQuestions));
+    this.quesService.uploadQuestion(tempObj).subscribe(res => console.log("Your question with ID" + res + "has been submitted"))
   }
 
   onReset(form) {
