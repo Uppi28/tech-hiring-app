@@ -32,12 +32,12 @@ export class QuestionsComponent implements OnInit {
     });
   }
 
-  openDialog(editQues): void {
+  openDialog(editQuesIndex): void {
     const dialogRef = this.dialog.open(EditQuestionDialog, {
       width: '80vw',
       maxHeight: '90vh',
       // data: JSON.parse(JSON.stringify(editQues)) // To immutably send data
-      data: editQues
+      data: this.quesData[editQuesIndex]
     });
   }
 
