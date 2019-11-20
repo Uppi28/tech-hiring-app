@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { quesData } from "../questions/questions";
+import { HttpClient } from "@angular/common/http";
 
 
 @Component({
@@ -9,16 +10,21 @@ import { quesData } from "../questions/questions";
 })
 export class TestviewComponent implements OnInit {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
-  quesData = quesData
+  quesData: object = {};
+  quesDataIndex: string[];
   correctOptions: number[] = new Array(quesData.length);
 
   ngOnInit() {
-    let answerData = [...this.quesData] 
+    this.http.get('https://tech-hiring-app.firebaseio.com/questions.json').subscribe(res => {
+      this.quesData = JSON.parse(JSON.stringify(res));
+      this.quesDataIndex = Object.keys(this.quesData);      
+    });
+    let answerData = JSON.parse(JSON.stringify(this.quesData));
     let d,i;
-    answerData.map((d,i) => {
-      answerData[i]['userAns'] = "";
+    Object.keys(answerData).map((d) => {
+      answerData[d]['userAns'] = "";
     })
   } 
   submitTest(updatedData) {
