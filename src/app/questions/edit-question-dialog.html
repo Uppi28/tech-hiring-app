@@ -1,12 +1,12 @@
 <div class="questionHolder">
   <mat-form-field>
-    <input matInput [(ngModel)]="data.Question">
+    <input matInput [(ngModel)]="quesData.Question">
   </mat-form-field>
 </div>
-<div *ngFor="let option of data.Options; let index = index; trackBy: trackByIndex" class="optionsHolder alignCenter" style="justify-content: space-evenly;">
+<div *ngFor="let option of quesData.Options; let index = index; trackBy: trackByIndex" class="optionsHolder alignCenter" style="justify-content: space-evenly;">
   <mat-form-field>
-      <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" required [value]="data.Options[index]"
-        [(ngModel)]="data.Options[index]" name="name"></textarea>
+      <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" required [value]="quesData.Options[index]"
+        [(ngModel)]="quesData.Options[index]" name="name"></textarea>
   </mat-form-field>
   <button mat-mini-fab aria-label="icon-button with a add icon" class="addOption" (click)="addOption(index)">
     <mat-icon>add</mat-icon>
@@ -20,7 +20,7 @@
     <i class="glyphicon glyphicon-repeat hidden-sm hidden-md hidden-lg"></i>
     <span class="hidden-xs">Reset Changes</span>
   </button>
-  <button mat-raised-button [mat-dialog-close]="data" cdkFocusInitial  color="primary" (click)="onSubmitChanges()">
+  <button mat-raised-button [mat-dialog-close]="quesData" cdkFocusInitial  color="primary" (click)="onSubmitChanges()">
       <i class="glyphicon glyphicon-arrow-right hidden-sm hidden-md hidden-lg"></i>
       <span class="hidden-xs">Submit Changes</span>
   </button>

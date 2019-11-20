@@ -22,7 +22,7 @@ export class QuestionsComponent implements OnInit {
   quesData: object;
   quesDataIndex: string[];
   quesDatum: object;
-  
+  editQuesIndex: string
   ngOnInit() {
     this.http.get('https://tech-hiring-app.firebaseio.com/questions.json').subscribe(res => {
       this.quesData = res
@@ -32,12 +32,25 @@ export class QuestionsComponent implements OnInit {
     });
   }
 
+  updateQuestion(editedQue) {
+    this.http.patch('https://tech-hiring-app.firebaseio.com/questions/' + this.editQuesIndex + '.json', editedQue).subscribe(res => {
+      this.ngOnInit();
+    })
+  }
+
   openDialog(editQuesIndex): void {
+    this.editQuesIndex = editQuesIndex
     const dialogRef = this.dialog.open(EditQuestionDialog, {
       width: '80vw',
       maxHeight: '90vh',
       // data: JSON.parse(JSON.stringify(editQues)) // To immutably send data
-      data: this.quesData[editQuesIndex]
+      data: {quesData: JSON.parse(JSON.stringify(this.quesData[this.editQuesIndex])), key: this.editQuesIndex}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+      
+      this.updateQuestion(result);
     });
   }
 
@@ -48,13 +61,18 @@ export class QuestionsComponent implements OnInit {
   templateUrl: 'edit-question-dialog.html',
   styleUrls: ['edit-question-dialog.css']
 })
-export class EditQuestionDialog {
+export class EditQuestionDialog implements OnInit{
 
   constructor(
     public dialogRef: MatDialogRef<EditQuestionDialog>,
+    private http: HttpClient,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
 
-  
+  quesData: object = this.data['quesData'];
+  ngOnInit() {
+    console.log(this.data['quesData']);
+    this.http.get('https://tech-hiring-app.firebaseio.com/questions.json')
+  }
   onResetClick(): void {
     console.log(this.data);
   }
@@ -64,14 +82,15 @@ export class EditQuestionDialog {
   }
 
   onSubmitChanges() {
-    console.log(this.data);
-  }
+    this.http.post('https://tech-hiring-app.firebaseio.com/questions/'+ this.data['key'] + '.json', this.quesData)
+    console.log(this.quesData);
+  } 
 
   addOption(index) {
     console.log(index);
-    this.data.Options.splice(index+1, 0, "");
+    this.quesData['Options'].splice(index+1, 0, "");
   }
   removeOption(index) {
-    this.data.Options.splice(index,1)
+    this.quesData['Options'].splice(index,1)
   }
 }
