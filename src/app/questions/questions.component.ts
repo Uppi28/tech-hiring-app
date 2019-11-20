@@ -26,9 +26,7 @@ export class QuestionsComponent implements OnInit {
   ngOnInit() {
     this.http.get('https://tech-hiring-app.firebaseio.com/questions.json').subscribe(res => {
       this.quesData = res
-      this.quesDataIndex = Object.keys(this.quesData);
-      console.log(this.quesData, this.quesDataIndex);
-      
+      this.quesDataIndex = Object.keys(this.quesData);      
     });
   }
 
@@ -47,9 +45,7 @@ export class QuestionsComponent implements OnInit {
       data: {quesData: JSON.parse(JSON.stringify(this.quesData[this.editQuesIndex])), key: this.editQuesIndex}
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
-      
+    dialogRef.afterClosed().subscribe(result => {      
       this.updateQuestion(result);
     });
   }
@@ -68,13 +64,12 @@ export class EditQuestionDialog implements OnInit{
     private http: HttpClient,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
 
-  quesData: object = this.data['quesData'];
+  quesData: object = JSON.parse(JSON.stringify(this.data['quesData']));
   ngOnInit() {
-    console.log(this.data['quesData']);
-    this.http.get('https://tech-hiring-app.firebaseio.com/questions.json')
+    // this.http.get('https://tech-hiring-app.firebaseio.com/questions.json')
   }
   onResetClick(): void {
-    console.log(this.data);
+    this.quesData = {...this.data['quesData'], Options: [...this.data['quesData'].Options]};
   }
 
   trackByIndex(index: number, obj: any): any {
@@ -83,11 +78,9 @@ export class EditQuestionDialog implements OnInit{
 
   onSubmitChanges() {
     this.http.post('https://tech-hiring-app.firebaseio.com/questions/'+ this.data['key'] + '.json', this.quesData)
-    console.log(this.quesData);
   } 
 
   addOption(index) {
-    console.log(index);
     this.quesData['Options'].splice(index+1, 0, "");
   }
   removeOption(index) {

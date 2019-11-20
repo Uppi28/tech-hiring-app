@@ -20,11 +20,9 @@ export class TestviewComponent implements OnInit {
     answerData.map((d,i) => {
       answerData[i]['userAns'] = "";
     })
-    console.log(answerData);
   } 
   submitTest(updatedData) {
     console.log(updatedData);
-    
   }
 
 }

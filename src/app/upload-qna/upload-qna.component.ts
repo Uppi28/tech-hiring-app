@@ -40,25 +40,23 @@ export class UploadQnaComponent implements OnInit {
     tempObj['selectedOption'] = this.selectedOption;
     tempObj['difficulty'] = this.questionDifficulty;
     tempObj['technology'] = this.selectedTech;
-    this.quesService.uploadQuestion(tempObj).subscribe(res => console.log("Your question with ID" + res + "has been submitted"))
+    this.quesService.uploadQuestion(tempObj).subscribe(res => console.log("Your question with ID" + res['name'] + "has been submitted"))
+    this.onReset();
   }
 
-  onReset(form) {
+  onReset() {
     this.question = "";
     this.options = new Array(5);
     this.selectedOption = "";
   }
 
   addOption(index) {
-    console.log(index);
     this.options.splice(index+1, 0, "");
     this.totalOptions = this.options.length;
-    console.log(this.totalOptions);
     
   }
   removeOption(index) {
     this.options.splice(index,1)
     this.totalOptions = this.options.length
-    console.log(this.totalOptions)
   }
 }
