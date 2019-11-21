@@ -3,7 +3,7 @@
         <button mat-mini-fab color="warn" class="pull-right" (click)="deleteQues(list)">
             <i class="material-icons">delete</i>
         </button>
-        <div (dblclick)="openDialog(list)">
+        <div (click)="openDialog(list)">
             <div>{{quesData[list].Question}}</div>
             <ol>
                 <li *ngFor="let item of quesData[list].Options">{{item}}</li>
