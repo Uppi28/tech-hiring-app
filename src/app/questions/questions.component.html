@@ -1,11 +1,13 @@
 <div class="tabContentWrapper">
     <mat-card *ngFor="let list of quesDataIndex; let index = index">
-            <button mat-mini-fab color="warn" class="pull-right" (click)="openDialog(list)">
-                <i class="material-icons">create</i>
-            </button>
-        <div>{{quesData[list].Question}}</div>
-        <ol>
-            <li *ngFor="let item of quesData[list].Options">{{item}}</li>
-        </ol>
+        <button mat-mini-fab color="warn" class="pull-right" (click)="deleteQues(list)">
+            <i class="material-icons">delete</i>
+        </button>
+        <div (dblclick)="openDialog(list)">
+            <div>{{quesData[list].Question}}</div>
+            <ol>
+                <li *ngFor="let item of quesData[list].Options">{{item}}</li>
+            </ol>
+        </div>
     </mat-card>
 </div>

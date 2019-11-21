@@ -36,6 +36,10 @@ export class QuestionsComponent implements OnInit {
     })
   }
 
+  deleteQues(quesIndex) {
+    this.http.delete('https://tech-hiring-app.firebaseio.com/questions/' + quesIndex + '.json').subscribe(res => this.ngOnInit());
+  }
+
   openDialog(editQuesIndex): void {
     this.editQuesIndex = editQuesIndex
     const dialogRef = this.dialog.open(EditQuestionDialog, {
