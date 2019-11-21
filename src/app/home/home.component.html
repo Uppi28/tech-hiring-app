@@ -1,11 +1,32 @@
 <div class="tabContentWrapper">
-    <div class="alignCenter" style="flex-direction: column;">
-        <div class="introTextMain">Hi...</div>
-        <div class="introText">Welcome to Musigma !</div>
-        <div class="introText">Please select "Start the test" to proceed to your online interview</div>
-        <div class="introText">Click on "What we do" to know more about Musigma</div>
+    <div class="alignCenter logoHolder">
+        <img class="logo" src="../../assets/images/logo.png" alt="MuSigma Business Solutions Pvt. Ltd.">
     </div>
-
+    
+    <div class="alignCenter welcomeText">Welcomes You!</div>
+    <div class="introText">Please enter your details in the below form: </div>
+    <form #form="ngForm" class="candDets">
+        <mat-form-field>
+            <mat-label>Full Name</mat-label>
+            <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize"
+                name="question" [(ngModel)]="candName"></textarea>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Technology</mat-label>
+            <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize"
+                name="question" [(ngModel)]="candTech"></textarea>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Years of Exp</mat-label>
+            <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize"
+                name="question" [(ngModel)]="candExp"></textarea>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Notice Period</mat-label>
+            <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize"
+                name="question" [(ngModel)]="candNotice"></textarea>
+        </mat-form-field>
+    </form>
 
     <div class="alignCenter routerWrapper">
         <button mat-raised-button class="navButtons">

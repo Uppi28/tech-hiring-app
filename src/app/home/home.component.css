@@ -1,17 +1,35 @@
 .routerWrapper{
     justify-content: space-evenly;
-    height: 30rem;
+    /* height: 30rem; */
 }
 
-.introTextMain {
-    font-size: 6rem;
+.logoHolder{
+    height: 35vh;
 }
 
-.introText {
-    font-size: 2rem;
-    margin: 1em;
+.logo{
+    height: 100%;
 }
 
+.candDets{
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.welcomeText{
+    font-size: 3rem;
+    margin-bottom: 2rem;
+}
+
+.introText{
+    font-size: 1.7rem;
+}
+
+mat-form-field{
+    width: 100%;
+}
 .navButtons {
     font-size: 1.5rem;
     padding: 1rem 2rem;
