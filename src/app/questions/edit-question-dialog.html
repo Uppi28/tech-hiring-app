@@ -1,6 +1,6 @@
 <div class="questionHolder">
   <mat-form-field>
-    <input matInput [(ngModel)]="quesData.Question">
+    <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" required [(ngModel)]="quesData.Question">{{quesData.Question}}</textarea>
   </mat-form-field>
 </div>
 <div *ngFor="let option of quesData.Options; let index = index; trackBy: trackByIndex" class="optionsHolder alignCenter" style="justify-content: space-evenly;">

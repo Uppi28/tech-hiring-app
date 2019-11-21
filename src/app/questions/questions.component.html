@@ -4,9 +4,9 @@
             <i class="material-icons">delete</i>
         </button>
         <div (click)="openDialog(list)">
-            <div>{{quesData[list].Question}}</div>
+            <div class="preWrap">{{quesData[list].Question}}</div>
             <ol>
-                <li *ngFor="let item of quesData[list].Options">{{item}}</li>
+                <li *ngFor="let item of quesData[list].Options" class="preWrap">{{item}}</li>
             </ol>
         </div>
     </mat-card>
