@@ -2,9 +2,11 @@ import { Injectable } from "@angular/core";
 
 @Injectable()
 export class Globals {
-    candName:string = '';
-    candTech:string = '';
-    candExp: string = '';
-    candNotice: string = '';
-    
+    public candData;
+    setCandValues(candData) {
+        this.candData = candData;
+    }
+    getCandValues() {
+        return this.candData;
+    }
 }

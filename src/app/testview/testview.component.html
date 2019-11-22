@@ -1,24 +1,20 @@
 <div class="tabContentWrapper" *ngIf="!ansSubmitted">
     <mat-card *ngFor="let index of quesDataIndex; let index = index" >
         <div class="questionWrap">{{quesData[index].Question}}</div>
-        <!-- <mat-radio-group class="options" [(ngModel)]="quesData['userAns']">
-            <div *ngFor="let option of quesData[index].Options; let i = index;" class="alignCenter">
-                <mat-radio-button [value]="quesData[index].Options[i]" style="line-break: break-word;"></mat-radio-button>
-                <label>{{quesData[index].Options[i]}}</label>
-            </div>
-        </mat-radio-group> -->
         <mat-radio-group (change)="onAnsSelect(index, $event)">
             <mat-radio-button *ngFor="let option of quesData[index].Options" [value]="option">
                 <span class="testViewOptions">{{option}}</span>
             </mat-radio-button>
         </mat-radio-group>
-        <!-- <label [for]="quesData[index].Question+option" *ngFor="let option of quesData[index].Options" class="alignLeft">
-            <input type="radio" [name]="quesData[index].Question" [id]="quesData[index].Question+option" class="testViewRadio">
-            <span>{{option}}</span>
-        </label> -->
     </mat-card>
     <button mat-raised-button color="primary" class="submitTestBtn" (click)="submitTest(quesData)">Submit Test</button>
 </div>
 
-<div *ngIf="ansSubmitted" class="tabContentWrapper alignCenter" style="height: 100vh; font-size: 3rem; text-align: center;">All your answers are submitted! Please wait for the results.</div>
+<div *ngIf="ansSubmitted" 
+    class="tabContentWrapper alignCenter" 
+    style="height: 90vh; font-size: 3rem; text-align: center; flex-direction: column;" [ngStyle]="{background: backgroundColor}">
+    <span>You have scored</span> 
+    <span style="font-size: 15rem;">{{candScore}}!</span>
+    <span>Please show this screen to the HR</span>
+</div>
 
