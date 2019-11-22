@@ -4,27 +4,27 @@
     </div>
     
     <div class="alignCenter welcomeText">Welcomes You!</div>
-    <div class="introText">Please enter your details in the below form: </div>
+    <div class="introText">Please enter your details in the form below: </div>
     <form #form="ngForm" class="candDets">
         <mat-form-field>
             <mat-label>Full Name</mat-label>
             <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize"
-                name="question" [(ngModel)]="candName"></textarea>
+                name="question" [(ngModel)]="candName" [value]="candName"></textarea>
         </mat-form-field>
         <mat-form-field>
             <mat-label>Technology</mat-label>
             <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize"
-                name="question" [(ngModel)]="candTech"></textarea>
+                name="question" [(ngModel)]="candTech" [value]="candTech"></textarea>
         </mat-form-field>
         <mat-form-field>
             <mat-label>Years of Exp</mat-label>
             <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize"
-                name="question" [(ngModel)]="candExp"></textarea>
+                name="question" [(ngModel)]="candExp" [value]="candExp"></textarea>
         </mat-form-field>
         <mat-form-field>
             <mat-label>Notice Period</mat-label>
             <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize"
-                name="question" [(ngModel)]="candNotice"></textarea>
+                name="question" [(ngModel)]="candNotice" [value]="candNotice"></textarea>
         </mat-form-field>
     </form>
 
@@ -37,7 +37,7 @@
         </button>
 
         <button mat-raised-button class="navButtons">
-            <div routerLink='/testview' class="alignCenter">
+            <div routerLink='/testview' class="alignCenter" (click)="getUserDets()">
                 <div class="noMargin">Start the test</div>
                 <i class="material-icons">play_circle_filled</i>
             </div>

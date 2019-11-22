@@ -15,20 +15,25 @@ export class TestviewComponent implements OnInit {
   quesData: object = {};
   quesDataIndex: string[];
   correctOptions: number[] = new Array(quesData.length);
+  answerData: object[] = [];
+  ansSubmitted: boolean = false;
 
   ngOnInit() {
     this.http.get('https://tech-hiring-app.firebaseio.com/questions.json').subscribe(res => {
       this.quesData = JSON.parse(JSON.stringify(res));
       this.quesDataIndex = Object.keys(this.quesData);      
     });
-    let answerData = JSON.parse(JSON.stringify(this.quesData));
-    let d,i;
-    Object.keys(answerData).map((d) => {
-      answerData[d]['userAns'] = "";
-    })
   } 
   submitTest(updatedData) {
     console.log(updatedData);
+    this.ansSubmitted = true;
+  }
+  onAnsSelect(quesIndex, event){
+    let tempObj = {
+      'userAns': event.value,
+      'correctAns': this.quesData[quesIndex].correctOption
+    };
+    this.answerData[quesIndex] = tempObj;
   }
 
 }

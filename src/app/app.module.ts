@@ -17,6 +17,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { QuestionsComponent, EditQuestionDialog } from './questions/questions.component';
 import { TestviewComponent } from './testview/testview.component';
 import { environment } from 'src/environments/environment';
+import { Globals } from './shared/globals';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,7 @@ import { environment } from 'src/environments/environment';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule
   ],
-  providers: [],
+  providers: [Globals],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

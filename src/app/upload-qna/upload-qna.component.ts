@@ -11,13 +11,13 @@ import { HttpClient } from '@angular/common/http';
 export class UploadQnaComponent implements OnInit {
   correctOption: string = "";
   question: string = "";
-  noOfOptions: number = 5
+  noOfOptions: number = 4
   questionDifficulty: string = "Easy";
   emptyValidator = new FormControl('', [Validators.required]);
   difficultyOptions: string[] = ['Hard', 'Medium', 'Easy'];
   technologies: string[] = ['HTML', 'CSS', 'JS', 'Angular', 'React'];
   selectedTech: string = "HTML";
-  totalOptions: number = 5
+  totalOptions: number = 4
   options: string[] = new Array(this.totalOptions);
   allQuestions: object[] = [];
   
@@ -46,7 +46,7 @@ export class UploadQnaComponent implements OnInit {
 
   onReset() {
     this.question = "";
-    this.options = new Array(5);
+    this.options = new Array(4);
     this.correctOption = "";
   }
 
