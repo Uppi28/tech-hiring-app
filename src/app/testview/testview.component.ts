@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { quesData } from "../questions/questions";
 import { HttpClient } from "@angular/common/http";
+import { QuestionsService } from "../shared/questions.service";
 import { Globals } from '../shared/globals';
 
 @Component({
@@ -10,7 +11,7 @@ import { Globals } from '../shared/globals';
 })
 export class TestviewComponent implements OnInit {
 
-  constructor(private http: HttpClient, public globals: Globals) {}
+  constructor(private quesService: QuestionsService, public globals: Globals) {}
 
   quesData: object = {};
   quesDataIndex: string[];
@@ -21,7 +22,7 @@ export class TestviewComponent implements OnInit {
   backgroundColor: string;
 
   ngOnInit() {
-    this.http.get('https://tech-hiring-app.firebaseio.com/questions.json').subscribe(res => {
+    this.quesService.getQuestions().subscribe(res => {
       this.quesData = JSON.parse(JSON.stringify(res));
       this.quesDataIndex = Object.keys(this.quesData);
     });
@@ -43,7 +44,7 @@ export class TestviewComponent implements OnInit {
       candTech: this.globals.candData.candTech,
       candScore: this.candScore
     }
-    this.http.post('https://tech-hiring-app.firebaseio.com/submissions.json', tempObj).subscribe(res => {
+    this.quesService.submitTest(tempObj).subscribe(res => {
       this.ansSubmitted = !this.ansSubmitted;
       this.backgroundColor = this.getbackgroundColor();
     });

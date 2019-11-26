@@ -1,12 +1,10 @@
-import {Component, Inject, OnInit} from '@angular/core';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-// import { quesData } from "./questions";
-import { HttpClient } from "@angular/common/http";
+import { Component, Inject, OnInit } from '@angular/core';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { QuestionsService } from "../shared/questions.service";
 
 export interface DialogData {
-  quesDatum: object;
-  Options: string[];
-  Question: string;
+  quesData: object,
+  key: string
 }
 
 @Component({
@@ -16,7 +14,7 @@ export interface DialogData {
 })
 export class QuestionsComponent implements OnInit {
 
-  constructor(public dialog: MatDialog, private http: HttpClient) { 
+  constructor(public dialog: MatDialog, private quesService: QuestionsService) {
   }
 
   quesData: object;
@@ -24,20 +22,14 @@ export class QuestionsComponent implements OnInit {
   quesDatum: object;
   editQuesIndex: string
   ngOnInit() {
-    this.http.get('https://tech-hiring-app.firebaseio.com/questions.json').subscribe(res => {
+    this.quesService.getQuestions().subscribe(res => {
       this.quesData = res
-      this.quesDataIndex = Object.keys(this.quesData);      
+      this.quesDataIndex = Object.keys(this.quesData);
     });
   }
 
-  updateQuestion(editedQue) {
-    this.http.patch('https://tech-hiring-app.firebaseio.com/questions/' + this.editQuesIndex + '.json', editedQue).subscribe(res => {
-      this.ngOnInit();
-    })
-  }
-
   deleteQues(quesIndex) {
-    this.http.delete('https://tech-hiring-app.firebaseio.com/questions/' + quesIndex + '.json').subscribe(res => this.ngOnInit());
+    this.quesService.deleteQuestion(quesIndex).subscribe(res => this.ngOnInit());
   }
 
   openDialog(editQuesIndex): void {
@@ -45,14 +37,15 @@ export class QuestionsComponent implements OnInit {
     const dialogRef = this.dialog.open(EditQuestionDialog, {
       width: '80vw',
       maxHeight: '90vh',
-      // data: JSON.parse(JSON.stringify(editQues)) // To immutably send data
-      data: {quesData: JSON.parse(JSON.stringify(this.quesData[this.editQuesIndex])), key: this.editQuesIndex}
+      data: {
+        quesData: JSON.parse(JSON.stringify(this.quesData[this.editQuesIndex])),
+        key: this.editQuesIndex
+      }
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if(result){
-        this.updateQuestion(result);
-      }      
+      console.log(result);
+      this.quesService.editQuestion(result['key'], result.quesData).subscribe(() => this.ngOnInit());
     });
   }
 
@@ -63,19 +56,20 @@ export class QuestionsComponent implements OnInit {
   templateUrl: 'edit-question-dialog.html',
   styleUrls: ['edit-question-dialog.css']
 })
-export class EditQuestionDialog implements OnInit{
+export class EditQuestionDialog implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<EditQuestionDialog>,
-    private http: HttpClient,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+    @Inject(MAT_DIALOG_DATA) public data: DialogData,
+    private quesService: QuestionsService) { }
 
+  resetData: object = JSON.parse(JSON.stringify(this.data));
   quesData: object = JSON.parse(JSON.stringify(this.data['quesData']));
-  ngOnInit() {
-    // this.http.get('https://tech-hiring-app.firebaseio.com/questions.json')
-  }
+  key: string = JSON.parse(JSON.stringify(this.data['key']));
+  returnData: object;
+  ngOnInit() { }
   onResetClick(): void {
-    this.quesData = {...this.data['quesData'], Options: [...this.data['quesData'].Options]};
+    this.data = { ...this.resetData['quesData'], Options: [...this.resetData['quesData']['Options']] };
   }
 
   trackByIndex(index: number, obj: any): any {
@@ -83,13 +77,16 @@ export class EditQuestionDialog implements OnInit{
   }
 
   onSubmitChanges() {
-    this.http.post('https://tech-hiring-app.firebaseio.com/questions/'+ this.data['key'] + '.json', this.quesData)
-  } 
+    this.data.quesData = {
+      ...this.quesData,
+      Options: this.quesData['Options']
+    }
+  }
 
   addOption(index) {
-    this.quesData['Options'].splice(index+1, 0, "");
+    this.quesData['Options'].splice(index + 1, 0, "");
   }
   removeOption(index) {
-    this.quesData['Options'].splice(index,1)
+    this.quesData['Options'].splice(index, 1)
   }
 }

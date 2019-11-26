@@ -4,13 +4,15 @@ import { UploadQnaComponent } from './upload-qna/upload-qna.component';
 import { HomeComponent } from './home/home.component';
 import { QuestionsComponent } from './questions/questions.component';
 import { TestviewComponent } from './testview/testview.component';
+import { ResultsComponent } from './results/results.component';
 
 const appRoutes : Routes = [
     {path: '', redirectTo: '/home', pathMatch: 'full'},
     {path: 'home', component: HomeComponent},
     {path: 'uploadqna', component: UploadQnaComponent},
     {path: 'questions', component: QuestionsComponent},
-    {path: 'testview', component: TestviewComponent}
+    {path: 'testview', component: TestviewComponent},
+    {path: 'results', component: ResultsComponent}
 ]
 
 @NgModule({

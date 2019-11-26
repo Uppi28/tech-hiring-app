@@ -18,6 +18,7 @@ import { QuestionsComponent, EditQuestionDialog } from './questions/questions.co
 import { TestviewComponent } from './testview/testview.component';
 import { environment } from 'src/environments/environment';
 import { Globals } from './shared/globals';
+import { ResultsComponent } from './results/results.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { Globals } from './shared/globals';
     HeaderComponent,
     QuestionsComponent,
     EditQuestionDialog,
-    TestviewComponent
+    TestviewComponent,
+    ResultsComponent
   ],
   entryComponents:[
     EditQuestionDialog
