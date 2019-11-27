@@ -12,7 +12,7 @@ const appRoutes : Routes = [
     {path: 'uploadqna', component: UploadQnaComponent},
     {path: 'questions', component: QuestionsComponent},
     {path: 'testview', component: TestviewComponent},
-    {path: 'results', component: ResultsComponent}
+    {path: 'resultsView', component: ResultsComponent}
 ]
 
 @NgModule({

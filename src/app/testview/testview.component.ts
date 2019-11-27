@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { quesData } from "../questions/questions";
-import { HttpClient } from "@angular/common/http";
 import { QuestionsService } from "../shared/questions.service";
+import { SubmissionsService } from "../shared/submissions.service";
 import { Globals } from '../shared/globals';
 
 @Component({
@@ -11,7 +11,7 @@ import { Globals } from '../shared/globals';
 })
 export class TestviewComponent implements OnInit {
 
-  constructor(private quesService: QuestionsService, public globals: Globals) {}
+  constructor(private quesService: QuestionsService, public globals: Globals, private subService: SubmissionsService) {}
 
   quesData: object = {};
   quesDataIndex: string[];
@@ -38,13 +38,14 @@ export class TestviewComponent implements OnInit {
         this.candScore--;
       }
     });
-    tempObj[this.globals.candData.candName] = {
+    tempObj = {
+      candName: this.globals.candData.candName,
       candExp: this.globals.candData.candExp,
       candNotice: this.globals.candData.candNotice,
       candTech: this.globals.candData.candTech,
       candScore: this.candScore
     }
-    this.quesService.submitTest(tempObj).subscribe(res => {
+    this.subService.submitTest(tempObj).subscribe(res => {
       this.ansSubmitted = !this.ansSubmitted;
       this.backgroundColor = this.getbackgroundColor();
     });

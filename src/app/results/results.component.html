@@ -1,0 +1,9 @@
+<div class="tabContentWrapper">
+    <mat-card *ngFor="let item of resultsDataIndex" [style.background-color]="resultsData[item]['bgColor']">
+        <div class="candName">{{ resultsData[item]['candName'] }}</div>
+        <div class="candScore">Score: {{ resultsData[item]['candScore'] }}</div>
+        <div class="candScore">Experience: {{ resultsData[item]['candExp'] }}</div>
+        <div class="candScore">Notice Period: {{ resultsData[item]['candNotice'] }}</div>
+        <div class="candScore">Technologies: {{ resultsData[item]['candTech'] }}</div>
+    </mat-card>
+</div>

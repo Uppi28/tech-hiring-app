@@ -23,7 +23,5 @@ export class QuestionsService {
   editQuestion(encKey, quesData) {
     return this.http.patch('https://tech-hiring-app.firebaseio.com/questions/'+ encKey + '.json', quesData)
   }
-  submitTest(tempObj) {
-    return this.http.post('https://tech-hiring-app.firebaseio.com/submissions.json', tempObj)
-  }
+  
 }

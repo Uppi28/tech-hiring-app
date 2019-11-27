@@ -13,7 +13,7 @@
 
 .candDets{
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
     flex-direction: column;
 }
@@ -29,6 +29,7 @@
 
 mat-form-field{
     width: 100%;
+    max-width: 900px;
 }
 .navButtons {
     font-size: 1.5rem;

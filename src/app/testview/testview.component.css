@@ -18,6 +18,8 @@ mat-radio-button{
 }
 .questionWrap{
     margin-bottom: 1rem;
+    word-break: break-word;
+    white-space: pre-line;
 }
 .submitTestBtn{
     position: fixed;
