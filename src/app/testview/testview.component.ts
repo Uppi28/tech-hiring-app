@@ -26,7 +26,7 @@ export class TestviewComponent implements OnInit {
     this.quesService.getQuestions().subscribe(res => {
       this.showLoader = false;
       this.quesData = JSON.parse(JSON.stringify(res));
-      this.quesDataIndex = Object.keys(this.quesData);
+      this.quesDataIndex = Object.keys(this.quesData);      
     });
   }
   submitTest() {
