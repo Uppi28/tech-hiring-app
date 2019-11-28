@@ -20,16 +20,23 @@ export class QuestionsComponent implements OnInit {
   quesData: object;
   quesDataIndex: string[];
   quesDatum: object;
-  editQuesIndex: string
+  editQuesIndex: string;
+  showLoader: boolean = true;
+
   ngOnInit() {
     this.quesService.getQuestions().subscribe(res => {
+      this.showLoader = false;
       this.quesData = res
       this.quesDataIndex = Object.keys(this.quesData);
     });
   }
 
   deleteQues(quesIndex) {
-    this.quesService.deleteQuestion(quesIndex).subscribe(res => this.ngOnInit());
+    this.showLoader = true;
+    this.quesService.deleteQuestion(quesIndex).subscribe(res => {
+      this.showLoader = false;
+      this.ngOnInit()
+    });
   }
 
   openDialog(editQuesIndex): void {
@@ -44,8 +51,11 @@ export class QuestionsComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
-      this.quesService.editQuestion(result['key'], result.quesData).subscribe(() => this.ngOnInit());
+      this.showLoader = true;
+      this.quesService.editQuestion(result['key'], result.quesData).subscribe(() => {
+        this.showLoader = false;
+        this.ngOnInit()
+      });
     });
   }
 

@@ -26,12 +26,14 @@ export class UploadQnaComponent implements OnInit {
   ngOnInit() {
     
   }
+  showLoader: boolean = false;
 
   trackByIndex(index: number, obj: any): any {
     return index;
   }
 
   onSubmit() {
+    this.showLoader = true;
     // Resetting before assigning values
     let tempObj: object = {};
     // Setting values on update
@@ -40,7 +42,10 @@ export class UploadQnaComponent implements OnInit {
     tempObj['correctOption'] = this.correctOption;
     tempObj['difficulty'] = this.questionDifficulty;
     tempObj['technology'] = this.selectedTech;
-    this.quesService.uploadQuestion(tempObj).subscribe(res => console.log("Your question with ID" + res['name'] + "has been submitted"))
+    this.quesService.uploadQuestion(tempObj).subscribe(res => {
+      this.showLoader = false;
+      console.log("Your question with ID" + res['name'] + "has been submitted")
+    })
     this.onReset();
   }
 

@@ -1,0 +1,23 @@
+.loaderHolder{
+    position: absolute;
+    top: 0;
+    height: 100vh;
+    width: 100vw;
+    z-index: 1;
+}
+.loaderScreen{
+    opacity: 0.5;
+    width: 100vw;
+    height: 100vh;
+    background: black;
+}
+.loader{
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    top: 45%;
+    left: 42%;
+}
+.loaderHolder::ng-deep .mat-progress-spinner circle, .mat-spinner circle{
+    stroke: white!important;
+}

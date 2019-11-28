@@ -20,14 +20,17 @@ export class TestviewComponent implements OnInit {
   ansSubmitted: boolean = false;
   candScore: number = 0;
   backgroundColor: string;
+  showLoader: boolean = true;
 
   ngOnInit() {
     this.quesService.getQuestions().subscribe(res => {
+      this.showLoader = false;
       this.quesData = JSON.parse(JSON.stringify(res));
       this.quesDataIndex = Object.keys(this.quesData);
     });
   }
   submitTest() {
+    this.showLoader = true;
     let tempObj = {};
     this.candScore = 0
     this.answerData.map((datum) => {
@@ -46,6 +49,7 @@ export class TestviewComponent implements OnInit {
       candScore: this.candScore
     }
     this.subService.submitTest(tempObj).subscribe(res => {
+      this.showLoader = false;
       this.ansSubmitted = !this.ansSubmitted;
       this.backgroundColor = this.getbackgroundColor();
     });
@@ -67,8 +71,6 @@ export class TestviewComponent implements OnInit {
       'userAns': event.value,
       'correctAns': this.quesData[quesIndex].correctOption
     };
-    this.answerData.push(tempObj);
-    console.log(this.answerData);
-    
+    this.answerData.push(tempObj);    
   }
 }

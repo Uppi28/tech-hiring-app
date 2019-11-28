@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatFormFieldModule } from "@angular/material/form-field";
-import { MatInputModule, MatRadioModule, MatButtonModule, MatCardModule, MatSelectModule, MatDialogModule, MatIconModule } from "@angular/material";
+import { MatInputModule, MatRadioModule, MatButtonModule, MatCardModule, MatSelectModule, MatDialogModule, MatIconModule, MatProgressSpinnerModule } from "@angular/material";
 import { UploadQnaComponent } from './upload-qna/upload-qna.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -19,6 +19,7 @@ import { TestviewComponent } from './testview/testview.component';
 import { environment } from 'src/environments/environment';
 import { Globals } from './shared/globals';
 import { ResultsComponent } from './results/results.component';
+import { LoaderComponent } from './shared/loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { ResultsComponent } from './results/results.component';
     QuestionsComponent,
     EditQuestionDialog,
     TestviewComponent,
-    ResultsComponent
+    ResultsComponent,
+    LoaderComponent
   ],
   entryComponents:[
     EditQuestionDialog
@@ -47,6 +49,7 @@ import { ResultsComponent } from './results/results.component';
     MatCardModule,
     MatDialogModule,
     MatIconModule,
+    MatProgressSpinnerModule,
     HttpClientModule,
     ReactiveFormsModule,
     AppRoutingModule,

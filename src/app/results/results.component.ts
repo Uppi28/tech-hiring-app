@@ -11,13 +11,17 @@ export class ResultsComponent implements OnInit {
 
   resultsDataIndex: string[] = [];
   resultsData: any;
+  showLoader: boolean = true;
 
   ngOnInit() {
     this.subService.getTestResults().subscribe(res => {
+      this.showLoader = false;
       this.resultsDataIndex = Object.keys(res);
       this.resultsData = res
       this.resultsDataIndex.map(datum => {
-        this.resultsData[datum]['bgColor'] = (this.resultsData[datum]['candScore'] <= 5) ? 'red' : (this.resultsData[datum]['candScore'] > 5 && this.resultsData[datum]['candScore'] <= 25) ? 'orange' : 'green';
+        this.resultsData[datum]['bgColor'] = (this.resultsData[datum]['candScore'] <= 5) ? 
+        'red' : (this.resultsData[datum]['candScore'] > 5 && this.resultsData[datum]['candScore'] <= 25) ? 
+            'orange' : 'green';
       })
     });
   }
