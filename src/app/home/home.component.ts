@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Globals } from "../shared/globals";
+import { MatSnackBar, MatSnackBarModule } from "@angular/material";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -11,21 +13,46 @@ export class HomeComponent implements OnInit {
   candTech: string = "";
   candExp: string = "";
   candNotice: string = "";
+  missingValues: string = "";
 
-  constructor(public globals: Globals) { }
+  constructor(public globals: Globals, private snackBar: MatSnackBar, private router: Router) { }
 
   ngOnInit() {
     
   }
 
+  openSnackBar(message: string, action: string = 'Dismiss') {
+    this.snackBar.open(message, action, {
+      duration: 4000,
+    });
+  }
+
   getUserDets() {
-    // let tempObj: {candName:string, candTech:string, candExp:string, candNotice:string} =;
-    let tempObj:any = {};
-    tempObj['candName'] = this.candName;
-    tempObj['candTech'] = this.candTech;
-    tempObj['candExp'] = this.candExp;
-    tempObj['candNotice'] = this.candNotice;
-    this.globals.setCandValues(tempObj);
+    this.missingValues = '';
+    if(this.candName === "" || this.candTech === "" || this.candExp === "" || this.candNotice === "") {
+      console.log(this.candName, this.candTech, this.candExp);
+      if(this.candName === '') {
+        this.missingValues += ' Your Name'
+      }
+      if(this.candExp === '') {
+        this.missingValues += ' Your Experience';
+      }
+      if(this.candNotice === '') {
+        this.missingValues += ' Your Notice Period';
+      }
+      if(this.candTech === '') {
+        this.missingValues += ' Technologies that you have worked on'
+      }
+      this.openSnackBar("Please enter " + this.missingValues);
+    } else {
+      let tempObj:any = {};
+      tempObj['candName'] = this.candName;
+      tempObj['candTech'] = this.candTech;
+      tempObj['candExp'] = this.candExp;
+      tempObj['candNotice'] = this.candNotice;
+      this.globals.setCandValues(tempObj);
+      this.router.navigate(['/testview'])
+    }
   }
 
   goToMusigma() {
