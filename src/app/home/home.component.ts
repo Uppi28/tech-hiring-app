@@ -10,8 +10,11 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
   candName: string = "";
+  techArray: string[] = ['Angular', 'React'];
   candTech: string = "";
+  expRange: string[] = ['<6 months', '1-2 years', "3-5 years", "5-7 years", ">7 years"]
   candExp: string = "";
+  noticeRange: string[] = ['Immediate', '<=1 month', '1-2 months', '2-4 months', '4-6 months', '>6 months'];
   candNotice: string = "";
   missingValues: string = "";
 

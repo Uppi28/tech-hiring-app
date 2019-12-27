@@ -12,19 +12,25 @@
                 name="question" [(ngModel)]="candName" [value]="candName"></textarea>
         </mat-form-field>
         <mat-form-field>
-            <mat-label>Technology</mat-label>
-            <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize"
-                name="question" [(ngModel)]="candTech" [value]="candTech"></textarea>
+            <mat-label>Choose the technology</mat-label>
+            <mat-select [(value)]="candTech">
+                <mat-option *ngFor="let tech of techArray" [value]="tech">{{tech}}
+                </mat-option>
+            </mat-select>
         </mat-form-field>
         <mat-form-field>
-            <mat-label>Years of Exp</mat-label>
-            <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize"
-                name="question" [(ngModel)]="candExp" [value]="candExp"></textarea>
+            <mat-label>Choose the Experience Range</mat-label>
+            <mat-select [(value)]="candExp">
+                <mat-option *ngFor="let exp of expRange" [value]="exp">{{exp}}
+                </mat-option>
+            </mat-select>
         </mat-form-field>
         <mat-form-field>
-            <mat-label>Notice Period</mat-label>
-            <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize"
-                name="question" [(ngModel)]="candNotice" [value]="candNotice"></textarea>
+            <mat-label>Choose the Notice Period</mat-label>
+            <mat-select [(value)]="candNotice">
+                <mat-option *ngFor="let np of noticeRange" [value]="np">{{np}}
+                </mat-option>
+            </mat-select>
         </mat-form-field>
     </form>
 
