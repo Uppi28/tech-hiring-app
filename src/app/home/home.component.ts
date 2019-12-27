@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
   candName: string = "";
-  techArray: string[] = ['Angular', 'React'];
+  techArray: string[] = ['Angular', 'React', 'Both Angular and React'];
   candTech: string = "";
   expRange: string[] = ['<6 months', '1-2 years', "3-5 years", "5-7 years", ">7 years"]
   candExp: string = "";

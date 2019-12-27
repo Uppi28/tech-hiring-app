@@ -1,12 +1,14 @@
 <div class="questionHolder">
   <mat-form-field>
-    <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" required [(ngModel)]="quesData['Question']">{{quesData['Question']}}</textarea>
+    <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" required
+      [(ngModel)]="quesData['Question']">{{quesData['Question']}}</textarea>
   </mat-form-field>
 </div>
-<div *ngFor="let option of quesData['Options']; let index = index; trackBy: trackByIndex" class="optionsHolder alignCenter" style="justify-content: space-evenly;">
+<div *ngFor="let option of quesData['Options']; let index = index; trackBy: trackByIndex"
+  class="optionsHolder alignCenter" style="justify-content: space-evenly;">
   <mat-form-field>
-      <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" required [value]="quesData['Options'][index]"
-        [(ngModel)]="quesData['Options'][index]" name="name"></textarea>
+    <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" required [value]="quesData['Options'][index]"
+      [(ngModel)]="quesData['Options'][index]" name="name"></textarea>
   </mat-form-field>
   <button mat-mini-fab aria-label="icon-button with a add icon" class="addOption" (click)="addOption(index)">
     <mat-icon>add</mat-icon>
@@ -15,13 +17,19 @@
     <mat-icon>remove</mat-icon>
   </button>
 </div>
+<mat-form-field>
+  <mat-select [(value)]="changedCorrectOption">
+    <mat-option *ngFor="let option of quesData['Options']" [value]="option">{{option}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
 <div mat-dialog-actions class="actionBtnsWrapper">
   <button mat-raised-button (click)="onResetClick()" color="warn">
     <i class="glyphicon glyphicon-repeat hidden-sm hidden-md hidden-lg"></i>
     <span class="hidden-xs">Reset Changes</span>
   </button>
-  <button mat-raised-button [mat-dialog-close]="data" cdkFocusInitial  color="primary" (click)="onSubmitChanges()">
-      <i class="glyphicon glyphicon-arrow-right hidden-sm hidden-md hidden-lg"></i>
-      <span class="hidden-xs">Submit Changes</span>
+  <button mat-raised-button [mat-dialog-close]="data" cdkFocusInitial color="primary" (click)="onSubmitChanges()">
+    <i class="glyphicon glyphicon-arrow-right hidden-sm hidden-md hidden-lg"></i>
+    <span class="hidden-xs">Submit Changes</span>
   </button>
 </div>

@@ -68,7 +68,8 @@ export class TestviewComponent implements OnInit {
     }
   }
   onAnsSelect(quesIndex, event) {
-    let tempObj = {
+    let tempObj = {};
+    tempObj = {
       'question': this.quesData[quesIndex]['Question'],
       'userAns': event.value,
       'correctAns': this.quesData[quesIndex].correctOption

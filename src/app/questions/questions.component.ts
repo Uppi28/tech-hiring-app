@@ -53,6 +53,10 @@ export class QuestionsComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
+      if(!result) {
+        this.showLoader = false;
+        return;
+      }
       this.showLoader = true;
       this.quesService.editQuestion(result['key'], result.quesData).subscribe(() => {
         this.showLoader = false;
@@ -79,6 +83,8 @@ export class EditQuestionDialog implements OnInit {
   quesData: object = JSON.parse(JSON.stringify(this.data['quesData']));
   key: string = JSON.parse(JSON.stringify(this.data['key']));
   returnData: object;
+  changedCorrectOption: string = this.quesData['correctOption']
+
   ngOnInit() { }
   onResetClick(): void {
     this.data = { ...this.resetData['quesData'], Options: [...this.resetData['quesData']['Options']] };
@@ -91,7 +97,8 @@ export class EditQuestionDialog implements OnInit {
   onSubmitChanges() {
     this.data.quesData = {
       ...this.quesData,
-      Options: this.quesData['Options']
+      Options: this.quesData['Options'],
+      correctOption: this.changedCorrectOption
     }
   }
 
