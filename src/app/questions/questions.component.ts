@@ -3,7 +3,7 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dial
 import { QuestionsService } from "../shared/questions.service";
 
 export interface DialogData {
-  quesData: object,
+  quesData: any,
   key: string
 }
 
@@ -12,12 +12,14 @@ export interface DialogData {
   templateUrl: './questions.component.html',
   styleUrls: ['./questions.component.css']
 })
-export class QuestionsComponent implements OnInit {
 
+
+export class QuestionsComponent implements OnInit {
+  
   constructor(public dialog: MatDialog, private quesService: QuestionsService) {
   }
 
-  quesData: object;
+  quesData: any;
   quesDataIndex: string[];
   quesDatum: object;
   editQuesIndex: string;

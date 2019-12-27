@@ -30,36 +30,35 @@ export class TestviewComponent implements OnInit {
     });
   }
   submitTest() {
-    console.log(this.answerData);
-    // this.showLoader = true;
-    // let tempObj = {};
-    // this.candScore = 0
-    // this.answerData.map((datum) => {
-    //   if(datum['userAns'] === datum['correctAns']){
-    //     this.candScore++;
-    //   }
-    //   else{
-    //     this.candScore--;
-    //   }
-    // });
-    // tempObj = {
-    //   candName: this.globals.candData.candName,
-    //   candExp: this.globals.candData.candExp,
-    //   candNotice: this.globals.candData.candNotice,
-    //   candTech: this.globals.candData.candTech,
-    //   candScore: this.candScore
-    // }
+    this.showLoader = true;
+    let tempObj = {};
+    this.candScore = 0
+    this.answerData.map((datum) => {
+      if(datum['userAns'] === datum['correctAns']){
+        this.candScore++;
+      }
+      else{
+        this.candScore--;
+      }
+    });
+    tempObj = {
+      candName: this.globals.candData.candName,
+      candExp: this.globals.candData.candExp,
+      candNotice: this.globals.candData.candNotice,
+      candTech: this.globals.candData.candTech,
+      candScore: this.candScore
+    }
     
     
-    // this.subService.submitTest(tempObj).subscribe(res => {
-    //   this.showLoader = false;
-    //   this.ansSubmitted = !this.ansSubmitted;
-    //   this.backgroundColor = this.getbackgroundColor();
-    // });
+    this.subService.submitTest(tempObj).subscribe(res => {
+      this.showLoader = false;
+      this.ansSubmitted = !this.ansSubmitted;
+      this.backgroundColor = this.getbackgroundColor();
+    });
   }
 
   getbackgroundColor() {
-    if (this.candScore < 5) {
+    if (this.candScore <= 5) {
       return 'red'
     } else if (this.candScore > 5 && this.candScore < 25) {
       return 'orange'

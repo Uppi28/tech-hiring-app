@@ -7,14 +7,14 @@
             </mat-radio-button>
         </mat-radio-group>
     </mat-card>
-    <button mat-raised-button color="primary" class="submitTestBtn" (click)="submitTest(quesData)">Submit Test</button>
+    <button mat-raised-button color="primary" class="submitTestBtn" (click)="submitTest()">Submit Test</button>
 </div>
 
-<!-- <div *ngIf="ansSubmitted" 
+<div *ngIf="ansSubmitted" 
     class="tabContentWrapper alignCenter" 
     style="height: calc(100vh - 52px); font-size: 3rem; text-align: center; flex-direction: column; color:white" [ngStyle]="{background: backgroundColor}">
     <span>You have scored</span> 
     <span style="font-size: 15rem;">{{candScore}}!</span>
     <span>Please show this screen to the HR</span>
-</div> -->
+</div>
 <app-loader [showLoader]="showLoader"></app-loader>

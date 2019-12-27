@@ -1,12 +1,12 @@
 <div class="questionHolder">
   <mat-form-field>
-    <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" required [(ngModel)]="quesData.Question">{{quesData.Question}}</textarea>
+    <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" required [(ngModel)]="quesData['Question']">{{quesData['Question']}}</textarea>
   </mat-form-field>
 </div>
-<div *ngFor="let option of quesData.Options; let index = index; trackBy: trackByIndex" class="optionsHolder alignCenter" style="justify-content: space-evenly;">
+<div *ngFor="let option of quesData['Options']; let index = index; trackBy: trackByIndex" class="optionsHolder alignCenter" style="justify-content: space-evenly;">
   <mat-form-field>
-      <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" required [value]="quesData.Options[index]"
-        [(ngModel)]="quesData.Options[index]" name="name"></textarea>
+      <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" required [value]="quesData['Options'][index]"
+        [(ngModel)]="quesData['Options'][index]" name="name"></textarea>
   </mat-form-field>
   <button mat-mini-fab aria-label="icon-button with a add icon" class="addOption" (click)="addOption(index)">
     <mat-icon>add</mat-icon>
