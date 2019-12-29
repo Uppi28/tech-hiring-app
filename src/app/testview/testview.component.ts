@@ -46,7 +46,8 @@ export class TestviewComponent implements OnInit {
       candExp: this.globals.candData.candExp,
       candNotice: this.globals.candData.candNotice,
       candTech: this.globals.candData.candTech,
-      candScore: this.candScore
+      candScore: this.candScore,
+      ansData: this.answerData
     }
     
     
