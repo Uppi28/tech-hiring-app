@@ -1,13 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { SubmissionsService } from "../shared/submissions.service";
+import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material';
+
+export interface DialogData {
+  ansData: any
+}
+
 @Component({
   selector: 'app-results',
   templateUrl: './results.component.html',
   styleUrls: ['./results.component.css']
 })
+
 export class ResultsComponent implements OnInit {
 
-  constructor(private subService: SubmissionsService) { }
+  constructor(public dialog: MatDialog, private subService: SubmissionsService) { }
 
   resultsDataIndex: string[] = [];
   resultsData: any;
@@ -25,5 +32,36 @@ export class ResultsComponent implements OnInit {
       })
     });
   }
+  openDialog(index):void {
+    const dialogRef = this.dialog.open(DisplayAnswersDialog, {
+      width: '80vw',
+      maxHeight: '90vh',
+      data: {
+        ansData: JSON.parse(JSON.stringify(this.resultsData[index].ansData))
+      }
+    })
 
+    dialogRef.afterClosed().subscribe(res => {
+      if(!res) {
+        this.showLoader = false;
+        return;
+      }
+    })
+  }
 }
+
+@Component({
+  selector: 'display-answers-dialog',
+  templateUrl: 'display-answers-dialog.html',
+  styleUrls: ['display-answers-dialog.css']
+})
+
+export class DisplayAnswersDialog implements OnInit {
+  constructor(
+    public dialogRef: MatDialogRef<DisplayAnswersDialog>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData){}
+
+  ngOnInit(){
+  }
+}
+

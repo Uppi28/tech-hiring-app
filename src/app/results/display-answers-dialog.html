@@ -1,0 +1,7 @@
+<div *ngFor="let qna of data['ansData']">
+    <mat-card>
+        <mat-card>{{qna['question']}}</mat-card>
+        <mat-card>Correct Answer: {{qna['correctAns']}}</mat-card>
+        <mat-card [ngStyle]="{'background': qna['correctAns'] === qna['userAns'] ? 'green' : 'red'}">User Answer: {{qna['userAns']}}</mat-card>
+    </mat-card>
+</div>

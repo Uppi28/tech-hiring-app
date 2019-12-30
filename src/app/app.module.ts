@@ -18,7 +18,7 @@ import { QuestionsComponent, EditQuestionDialog } from './questions/questions.co
 import { TestviewComponent } from './testview/testview.component';
 import { environment } from 'src/environments/environment';
 import { Globals } from './shared/globals';
-import { ResultsComponent } from './results/results.component';
+import { ResultsComponent, DisplayAnswersDialog } from './results/results.component';
 import { LoaderComponent } from './shared/loader/loader.component';
 
 @NgModule({
@@ -29,12 +29,14 @@ import { LoaderComponent } from './shared/loader/loader.component';
     HeaderComponent,
     QuestionsComponent,
     EditQuestionDialog,
+    DisplayAnswersDialog,
     TestviewComponent,
     ResultsComponent,
     LoaderComponent
   ],
   entryComponents:[
-    EditQuestionDialog
+    EditQuestionDialog,
+    DisplayAnswersDialog
   ],
   imports: [
     BrowserModule,
