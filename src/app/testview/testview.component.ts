@@ -75,6 +75,6 @@ export class TestviewComponent implements OnInit {
       'userAns': event.value,
       'correctAns': this.quesData[quesIndex].correctOption
     };
-    this.answerData.push(tempObj);    
+    this.answerData.push(tempObj);
   }
 }

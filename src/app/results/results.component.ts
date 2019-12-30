@@ -34,8 +34,9 @@ export class ResultsComponent implements OnInit {
   }
   openDialog(index):void {
     const dialogRef = this.dialog.open(DisplayAnswersDialog, {
-      width: '80vw',
+      width: '90vw',
       maxHeight: '90vh',
+      maxWidth: '90vh',
       data: {
         ansData: JSON.parse(JSON.stringify(this.resultsData[index].ansData))
       }
