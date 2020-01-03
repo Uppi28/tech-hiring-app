@@ -16,7 +16,7 @@ export class TestviewComponent implements OnInit {
   quesData: object = {};
   quesDataIndex: string[];
   correctOptions: number[] = new Array(quesData.length);
-  answerData: object[] = [];
+  answerData: {} = {};
   ansSubmitted: boolean = false;
   candScore: number = 0;
   backgroundColor: string;
@@ -33,14 +33,16 @@ export class TestviewComponent implements OnInit {
     this.showLoader = true;
     let tempObj = {};
     this.candScore = 0
-    this.answerData.map((datum) => {
-      if(datum['userAns'] === datum['correctAns']){
-        this.candScore++;
+    for (const ans in this.answerData) {
+      if (this.answerData.hasOwnProperty(ans)) {
+        if(this.answerData[ans]['userAns'] === this.answerData[ans]['correctAns']){
+          this.candScore++;
+        }
+        else{
+          this.candScore--;
+        }
       }
-      else{
-        this.candScore--;
-      }
-    });
+    }
     tempObj = {
       candName: this.globals.candData.candName,
       candExp: this.globals.candData.candExp,
@@ -49,7 +51,6 @@ export class TestviewComponent implements OnInit {
       candScore: this.candScore,
       ansData: this.answerData
     }
-    
     
     this.subService.submitTest(tempObj).subscribe(res => {
       this.showLoader = false;
@@ -69,12 +70,13 @@ export class TestviewComponent implements OnInit {
     }
   }
   onAnsSelect(quesIndex, event) {
-    let tempObj = {};
-    tempObj = {
-      'question': this.quesData[quesIndex]['Question'],
-      'userAns': event.value,
-      'correctAns': this.quesData[quesIndex].correctOption
-    };
-    this.answerData.push(tempObj);
+    if(this.answerData[quesIndex] === undefined) {
+      this.answerData[quesIndex] = {};
+    }
+    this.answerData[quesIndex]['question'] = this.quesData[quesIndex]['Question'];
+    this.answerData[quesIndex]['userAns'] = event.value;
+    this.answerData[quesIndex]['correctAns'] = this.quesData[quesIndex].correctOption;
+    console.log(this.answerData);
+    
   }
 }

@@ -23,20 +23,22 @@ export class ResultsComponent implements OnInit {
   ngOnInit() {
     this.subService.getTestResults().subscribe(res => {
       this.showLoader = false;
-      this.resultsDataIndex = Object.keys(res);
       this.resultsData = res
-      this.resultsDataIndex.map(datum => {
-        this.resultsData[datum]['bgColor'] = (this.resultsData[datum]['candScore'] <= 5) ? 
-        'red' : (this.resultsData[datum]['candScore'] > 5 && this.resultsData[datum]['candScore'] <= 25) ? 
-            'orange' : 'green';
-      })
+      for (const key in this.resultsData) {
+        this.resultsDataIndex.push(key);
+        if (this.resultsData.hasOwnProperty(key)) {
+          this.resultsData[key]['bgColor'] = (this.resultsData[key]['candScore'] <= 5) ? 
+          'red' : (this.resultsData[key]['candScore'] > 5 && this.resultsData[key]['candScore'] <= 25) ? 
+              'orange' : 'green';
+        }
+      }
     });
   }
   openDialog(index):void {
     const dialogRef = this.dialog.open(DisplayAnswersDialog, {
       width: '90vw',
-      maxHeight: '90vh',
-      maxWidth: '90vh',
+      maxHeight: '80vh',
+      maxWidth: '80vw',
       data: {
         ansData: JSON.parse(JSON.stringify(this.resultsData[index].ansData))
       }
@@ -62,7 +64,11 @@ export class DisplayAnswersDialog implements OnInit {
     public dialogRef: MatDialogRef<DisplayAnswersDialog>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData){}
 
+  ansKeys: string[];
   ngOnInit(){
+    this.ansKeys = Object.keys(this.data['ansData']);
+    console.log(this.data);
+    
   }
 }
 

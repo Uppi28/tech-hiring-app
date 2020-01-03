@@ -1,11 +1,11 @@
-<div *ngFor="let qna of data['ansData']" style="margin-bottom: 2rem;">
-    <div class="queWrap">{{qna['question']}}</div>
+<div *ngFor="let key of ansKeys" style="margin-bottom: 2rem;">
+    <div class="queWrap">{{ data['ansData'][key]['question'] }}</div>
     <div class="optionWrap">
         <div>Correct Answer:</div> 
-        <div>{{qna['correctAns']}}</div>
+        <div>{{ data['ansData'][key]['correctAns'] }}</div>
     </div>
-    <div class="optionWrap" [ngStyle]="{'background': qna['correctAns'] === qna['userAns'] ? 'green' : 'red'}">
+    <div class="optionWrap" [ngStyle]="{'background': data['ansData'][key]['correctAns'] === data['ansData'][key]['userAns'] ? 'green' : 'red'}">
         <div>User Answer:</div>
-        <div>{{qna['userAns']}}</div>
+        <div>{{ data['ansData'][key]['userAns'] }}</div>
     </div>
 </div>
