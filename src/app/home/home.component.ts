@@ -33,7 +33,6 @@ export class HomeComponent implements OnInit {
   getUserDets() {
     this.missingValues = '';
     if(this.candName === "" || this.candTech === "" || this.candExp === "" || this.candNotice === "") {
-      console.log(this.candName, this.candTech, this.candExp);
       if(this.candName === '') {
         this.missingValues += ' Your Name'
       }

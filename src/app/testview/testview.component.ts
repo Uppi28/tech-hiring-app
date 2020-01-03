@@ -76,7 +76,5 @@ export class TestviewComponent implements OnInit {
     this.answerData[quesIndex]['question'] = this.quesData[quesIndex]['Question'];
     this.answerData[quesIndex]['userAns'] = event.value;
     this.answerData[quesIndex]['correctAns'] = this.quesData[quesIndex].correctOption;
-    console.log(this.answerData);
-    
   }
 }

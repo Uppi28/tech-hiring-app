@@ -67,8 +67,6 @@ export class DisplayAnswersDialog implements OnInit {
   ansKeys: string[];
   ngOnInit(){
     this.ansKeys = Object.keys(this.data['ansData']);
-    console.log(this.data);
-    
   }
 }
 
