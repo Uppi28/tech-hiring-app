@@ -15,7 +15,7 @@ export class UploadQnaComponent implements OnInit {
   questionDifficulty: string = "Easy";
   emptyValidator = new FormControl('', [Validators.required]);
   difficultyOptions: string[] = ['Hard', 'Medium', 'Easy'];
-  technologies: string[] = ['HTML', 'CSS', 'JS', 'Angular', 'React'];
+  technologies: string[] = ['HTML', 'CSS', 'JS', 'Angular', 'React', Git];
   selectedTech: string = "HTML";
   totalOptions: number = 4
   options: string[] = new Array(this.totalOptions);
